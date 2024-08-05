@@ -22,7 +22,7 @@
   background: #151515;
   color: #fff;
   width: 100%;
-  border-radius: 15px;
+  border-radius: 5px;
   overflow: hidden;
 }
 
@@ -53,12 +53,9 @@
 }
 
 .customer .field {
-  margin: 2rem 0 0 0;
+  margin: 1rem 0 0 0;
 }
 
-.customer .field:first-of-type {
-  margin-top: 0;
-}
 
 /* Customer Table */
 .customer table {
@@ -801,4 +798,187 @@ form#customer_login {
   top: 50%;
   transform: translateY(-50%);
   left: 22px;
+}
+
+.reset-password-box{
+  display: none;
+}
+
+.reset-password-box{
+  min-width: 470px;
+  max-width: 470px;
+  margin: 0 auto;
+  background:#f5f5f5;
+  padding: 52px 32px 32px;
+}
+
+.customer .reset-password-box .field input{
+  background: #f9f9f9;
+  border: 1px solid #15151533;
+  border-radius: 4px;
+}
+
+.reset-password-box h1{
+  scroll-margin-top: 20rem;
+  font-size: 26px;
+  line-height: 34px;
+  text-align: center;
+  padding-bottom: 36px;
+  text-transform: uppercase;
+}
+
+#email-submit{
+  width: 100%;
+    padding: 19.5px 0;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-top: 18px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.customer button:after{
+  display: none;
+}
+
+.register_box{
+  width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0px auto;
+    background: #F4F4F4;
+    max-height: 764px;
+    padding: 40px;
+    flex-direction: column;
+}
+
+.register_box h1{
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 34px;
+  text-align: center;
+  color: #151515;
+}
+
+#create_customer{
+  width: 100%;
+  background: #FFF;
+  padding: 34px 32px;
+}
+
+.register .field label{
+  left: 22px;
+}
+
+.register .field input::placeholder {
+  opacity: 1;
+}
+
+.register h5{
+text-align: left;
+font-size: 20px;
+font-weight: 700;
+line-height: 24px;
+text-align: left;
+color: #151515;
+
+}
+
+.register .address{
+  background: #f9f9f9;
+  border: 1px solid #15151533;
+  border-radius: 4px;
+  width: 100%;
+  height: 4.5rem;
+}
+
+
+.register .field input:focus{
+  padding: 0px 0px 0px 20px;
+}
+
+.register .register-document select{
+  background: #f9f9f9;
+  border: 1px solid #15151533;
+  border-radius: 4px;
+  width: 100%;
+  height: 4.5rem;
+}
+
+
+.register .file-upload-container {
+  border: 1px dashed #1515153D;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.register .file-upload-container input[type='file'] {
+  display: none;
+}
+
+.register .file-upload-container input[type='file']::file-selector-button {
+  display: none;
+}
+
+.register .file-upload-button {
+  background: #4E4E4E14;
+  color: white;
+  padding: 14px 32px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.8px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: #151515;
+  margin-left: 48px;
+}
+
+.file-upload-container h4{
+  color: #151515;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  
+}
+.file-upload-container h6{
+font-size: 10px;
+font-weight: 400;
+line-height: 20px;
+text-align: left;
+color: #151515;
+
+}
+
+.register .accept-policy{
+font-size: 12px;
+font-weight: 400;
+line-height: 16px;
+text-align: left;
+color: #151515;
+
+}
+
+.register input[type=checkbox]{
+  width: 31px;
+  height: 19px;
+}
+
+.register button{
+  margin: 0px;
+  width: 132px;
+}
+
+.register button:nth-child(1){
+  background: transparent;
+  border: 1px solid #151515;
+  color: #000;
 }

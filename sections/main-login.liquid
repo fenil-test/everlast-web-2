@@ -25,7 +25,7 @@
 <div class="customer login section-{{ section.id }}-padding d-flex f-column j-center a-center">
   <div class="reset-password-box">
     <h1 id="recover" tabindex="-1">
-      {{ 'customer.recover_password.title' | t }}
+        WELCOME TO EVERLAST.<br>PLEASE Reset ACCOUNT TO CONTINUE.
     </h1>
     <p>
       {{ 'customer.recover_password.subtext' | t }}
@@ -34,6 +34,7 @@
     {%- form 'recover_customer_password' -%}
       {% assign recover_success = form.posted_successfully? %}
       <div class="field">
+        {%  render 'email' %}
         <input
           type="email"
           value=""
@@ -65,11 +66,11 @@
         </small>
       {%- endif -%}
 
-      <button id="email-submit">
+      <button id="email-submit" class="font-ex">
         {{ 'customer.login_page.submit' | t }}
       </button>
 
-      <a href="#login">
+      <a href="#login" class="cancel-reset">
         {{ 'customer.login_page.cancel' | t }}
       </a>
     {%- endform -%}
@@ -162,7 +163,7 @@
       {%- endif -%}
 
       <button class="font-ex">
-        {{ 'customer.login_page.sign_in' | t }}
+        LOGIN
       </button>
 
       Don’t have an account?<a href="{{ routes.account_register_url }}">
@@ -192,6 +193,7 @@
   let email_submit = document.querySelector('#email-submit');
   let customer_login_box = document.querySelector('.customer-login-box');
   let reset_password_box = document.querySelector('.reset-password-box');
+  let cancel_reset = document.querySelector('.cancel-reset');
 
   forgot.addEventListener('click',()=>{
     customer_login_box.style.display = "none";
@@ -199,6 +201,11 @@
   })
 
   email_submit.addEventListener('click',()=>{
+    customer_login_box.style.display = "block";
+    reset_password_box.style.display = "none";
+  })
+
+  cancel_reset.addEventListener('click',()=>{
     customer_login_box.style.display = "block";
     reset_password_box.style.display = "none";
   })

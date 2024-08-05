@@ -128,3 +128,7 @@
 .list-menu li:hover .mega-menu__content{
   display: block;
 }
+
+.header{
+  box-shadow: 0px 3px 13px 1px #000;
+}

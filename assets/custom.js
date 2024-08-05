@@ -24,7 +24,6 @@ multiShowBtn.addEventListener('click', () => {
     showCard.forEach((e) => {
         e.style.display = 'block'; 
     });
-    console.log("All cards are now visible"); 
     multiShowBtn1.style.display = 'block';
     multiShowBtn.style.display = 'none';
 });
@@ -37,7 +36,6 @@ multiShowBtn1.addEventListener('click', () => {
             e.style.display = 'none';
         }
     });
-    console.log("Only the first four cards are now visible");
     multiShowBtn1.style.display = 'none';
     multiShowBtn.style.display = 'block';
 });
