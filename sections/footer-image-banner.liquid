@@ -1,0 +1,116 @@
+{{ 'footer-image-banner.css' |  asset_url |  stylesheet_tag }}
+
+<style>
+    .footer-image-banner-{{ section.id }}{
+        background-image:url('{{ section.settings.image |  img_url: 'master' }}');
+        width:100%;
+        min-height:900px;
+        background-size:cover;
+        background-position: center;
+    }
+    
+
+</style>
+
+<div class="footer-image-banner footer-image-banner-{{ section.id }} d-flex j-center a-center">
+    <div class="d-flex a-center j-center f-column footer-banner">
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when 'images' %}
+                    <div class="t-center">
+                        {% if block.settings.heading-iamge != blank %}
+                            <picture>
+                                <source media="(min-width:300px)" srcset="{{ block.settings.heading-iamge |  image_url: width: 200 }}">
+                                <img src="{{ block.settings.heading-iamge | img_url: 50 }}" alt="{{ block.settings.heading-iamge.alt }}">
+                              </picture>
+                          {% endif %}
+                        <div class="">
+                            <h4 class="c-white">{{ block.settings.heading }}</h4>
+                            <h4 class="c-white">{{ block.settings.heading1 }}</h4>
+                        </div>
+                    </div>
+               
+                {% when 'buttons' %}
+                    <div class="footer-banner-btn">
+                        <a href="{{ block.settings.button_link_1 }}" class="c-white text-decoration font-ex"> {{ block.settings.button_label_1 }}</a>
+                        {% render 'right-icons' %}
+                    </div>
+                {% else %}
+                    
+            {% endcase %}
+           
+           
+        {% endfor %}
+    </div>
+</div>
+
+
+{% schema %}
+    {
+      "name": "Footer image banner",
+      "tag": "section",
+      "class": "section",
+      "disabled_on": {
+        "groups": ["header", "footer"]
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.image-banner.settings.image.label"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "images",
+          "name": "image",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "heading-iamge",
+              "label": "Heading image"
+            },
+            {
+              "type": "inline_richtext",
+              "id": "heading",
+              "default": "Image banner",
+              "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
+            },
+            {
+              "type": "inline_richtext",
+              "id": "heading1",
+              "default": "Image banner",
+              "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
+            }
+          ]
+        },
+        {
+          "type": "buttons",
+          "name": "t:sections.image-banner.blocks.buttons.name",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "text",
+              "id": "button_label_1",
+              "default": "Button label",
+              "label": "t:sections.image-banner.blocks.buttons.settings.button_label_1.label",
+              "info": "t:sections.image-banner.blocks.buttons.settings.button_label_1.info"
+            },
+            {
+              "type": "url",
+              "id": "button_link_1",
+              "label": "t:sections.image-banner.blocks.buttons.settings.button_link_1.label"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Footer image banner",
+          "blocks": [
+          ]
+        }
+      ]
+    }
+    {% endschema %}

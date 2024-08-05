@@ -19,6 +19,7 @@
     {% endif %}
     {{ block.shopify_attributes }}
   >
+    <span class="font-ex h6 product-size-guide" id="ModalOpen-sizechart">SIZE GUIDE</span>
     {%- for option in product.options_with_values -%}
       {%- liquid
         assign swatch_count = option.values | map: 'swatch' | compact | size
@@ -58,6 +59,7 @@
           %}
         </fieldset>
       {%- else -%}
+      {% if option.name contains "size" %}
         <div class="product-form__input product-form__input--dropdown">
           <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
             {{ option.name }}
@@ -84,9 +86,26 @@
                 picker_type: picker_type
               %}
             </select>
-            {% render 'icon-caret' %}
+            {% render 'dropdown-icon' %}
+
           </div>
         </div>
+        {% else %}
+        <fieldset class="js product-form__input product-form__input--swatch">
+          <legend class="form__label">
+            {{ option.name }}:
+            <span data-selected-swatch-value="{{ option.name }}">
+              {{- option.selected_value -}}
+            </span>
+          </legend>
+          {% render 'product-variant-options',
+            product: product,
+            option: option,
+            block: block,
+            picker_type: picker_type
+          %}
+        </fieldset>
+      {% endif %}
       {%- endif -%}
     {%- endfor -%}
     <script type="application/json">

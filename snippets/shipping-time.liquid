@@ -1,0 +1,12 @@
+{% assign current_date = 'now' | date: "%m/%d" %}
+{% assign shipping_date = current_date | date: "%s" | date: "%m/%d" %}
+
+{% assign current_da = 'now' | date: "%m/%d" %}
+{% assign shipping_da = current_da | date: "%s" | plus: 172800 | date: "%m/%d" %}
+<span class="fw-700">Order Today. Delivery Estimate: </span>{{ shipping_date }} - {{ shipping_da }}
+
+
+
+
+<span id="shipping-date"></span>
+        

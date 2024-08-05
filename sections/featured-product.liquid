@@ -172,10 +172,10 @@
                         <span class="visually-hidden">
                           {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
                         </span>
-                        {% render 'icon-minus' %}
+                        {% render 'mins-icon' %}
                       </button>
                       <input
-                        class="quantity__input"
+                        class="quantity__input fw-700"
                         type="number"
                         name="quantity"
                         id="Quantity-{{ section.id }}"
@@ -194,7 +194,7 @@
                         <span class="visually-hidden">
                           {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
                         </span>
-                        {% render 'icon-plus' %}
+                        {% render 'puls-icon' %}
                       </button>
                     </quantity-input>
                     {%- liquid

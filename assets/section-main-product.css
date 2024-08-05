@@ -64,7 +64,7 @@
 
   .product--large:not(.product--no-media) .product__info-wrapper {
     padding: 0 0 0 4rem;
-    max-width: 35%;
+    max-width: 40%;
     width: calc(35% - var(--grid-desktop-horizontal-spacing) / 2);
   }
 
@@ -168,7 +168,7 @@
   flex: 0 0 100%;
   padding: 0;
   margin: 0 0 1.2rem 0;
-  max-width: 44rem;
+  max-width: 17.5rem;
   min-width: fit-content;
   border: none;
 }
@@ -183,6 +183,7 @@
 
 .product-form__submit {
   margin-bottom: 1rem;
+  
 }
 
 .product-form__submit[aria-disabled='true'] + .shopify-payment-button .shopify-payment-button__button[disabled],
@@ -220,7 +221,7 @@
 .product__info-container .product-form,
 .product__info-container .product__description,
 .product__info-container .icon-with-text {
-  margin: 2.5rem 0;
+  margin: 0rem 0;
 }
 
 .product__text {
@@ -421,10 +422,7 @@ a.product__text {
     padding-right: calc(var(--media-shadow-horizontal-offset) * var(--media-shadow-visible));
   }
 
-  .product--thumbnail .product__media-item:not(.is-active),
-  .product--thumbnail_slider .product__media-item:not(.is-active) {
-    display: none;
-  }
+ 
 
   .product-media-modal__content > .product__media-item--variant.product__media-item--variant {
     display: none;
@@ -987,9 +985,7 @@ a.product__text {
     width: calc(25% - 0.8rem);
   }
 
-  .product--thumbnail_slider .slider-mobile-gutter .slider-button {
-    display: flex;
-  }
+  
 }
 
 @media screen and (min-width: 900px) {
@@ -1021,6 +1017,7 @@ a.product__text {
 
 .thumbnail.global-media-settings img {
   border-radius: 0;
+  mix-blend-mode: multiply;
 }
 
 .thumbnail[aria-current] {
@@ -1286,10 +1283,11 @@ a.product__text {
   --constrained-height: max(var(--constrained-min-height), calc(100vh - var(--viewport-offset)));
   margin-right: auto;
   margin-left: auto;
+  border: none;
 }
 
 .product-media-container.constrain-height.media-fit-contain {
-  --contained-width: calc(var(--constrained-height) * var(--aspect-ratio));
+  
   width: min(var(--contained-width), 100%);
 }
 
@@ -1298,7 +1296,7 @@ a.product__text {
 }
 
 .product-media-container.constrain-height .media {
-  padding-top: min(var(--constrained-height), var(--ratio-percent));
+  padding-top:0;
 }
 
 @media screen and (max-width: 749px) {
@@ -1471,4 +1469,58 @@ a.product__text {
   .recipient-form > input[type='checkbox']:checked + label .icon-checkmark {
     border: none;
   }
+}
+
+.product .thumbail-dropdown-list{
+  gap: 14px;
+}
+
+.product .product__title h3{
+  text-transform: uppercase;
+    letter-spacing: 0;
+}
+
+.product product-info .price__container .price-item{
+  font-weight: var(--font-heading-weight);
+  font-size: 24px;
+  line-height: 43.2px;
+  text-align: left;
+}
+
+.product .product-form__input .form__label{
+  display: none;
+}
+
+ .select .select__select{
+  font-size: 16px;
+  font-weight: var(--font-heading-weight);
+  line-height: 19.2px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--tertiary-color);
+}
+
+.product .product-form__input{
+  margin-top: 16px;
+  border: 1px solid #000000;
+}
+
+.product .select:after{
+  display: none;
+}
+
+.product .select select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid black;
+  background: url('path/to/your/image.png') no-repeat right center;
+  background-size: 1em; /* Adjust size as needed */
+  padding-right: 1.5em; /* Space for the custom arrow */
+}
+
+.product .select svg{
+  position: absolute;
+  top: 18px;
+  right: 10px;  
 }

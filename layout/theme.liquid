@@ -14,7 +14,9 @@
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{ 'slick.css' |  asset_url |  stylesheet_tag }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" defer></script>
     <title>
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -29,12 +31,17 @@
     {% render 'meta-tags' %}
 
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'slick.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'ajax-cart.js' | asset_url }}" defer="defer"></script>
     {%- if settings.animations_reveal_on_scroll -%}
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js" defer="defer"> </script>
     {{ content_for_header }}
 
     {%- liquid
@@ -91,7 +98,7 @@
       {% endfor %}
 
       {{ scheme_classes | prepend: 'body' }} {
-        color: rgba(var(--color-foreground), 0.75);
+        color: rgba(var(--color-foreground));
         background-color: rgb(var(--color-background));
       }
 
@@ -283,6 +290,9 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+
+
+    {{ 'brand-guide.css' |  asset_url |  stylesheet_tag }}
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
@@ -295,7 +305,28 @@
     {%- endif -%}
 
     {% sections 'header-group' %}
-
+       {% comment %} <modal-dialog id="ModalOpen-fenu" class="ModalClose-fenu">
+      <div class="subscriptionp-modal">
+         <div class="sadsd" id="">
+         <div class="fenu-deatils">
+           <h2>SIGN UP FOR EXCLUSIVE UPDATES</h2>
+           <p>Get email only offers when you join.</p>
+           <form class="popup-form">
+             <input type="email" placeholder="Email">
+             <input type="submit" value="Continue">
+          
+           </form>
+           
+         </div>
+         <div class="fenu-image">
+           <span id="ModalClose-menu"> 
+             {% render 'popuo-close-icon' %}
+           </span>
+           <img src="https://cdn.shopify.com/s/files/1/0701/3518/5664/files/85a28629-3a1e-4596-95d0-a69c91b904fb.jpg?v=1720884685">
+         </div>
+       </div>
+      </div>
+   </modal-dialog> {% endcomment %}
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>

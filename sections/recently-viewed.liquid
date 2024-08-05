@@ -1,0 +1,208 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{% comment %} <style>
+    .count-size-{{ count_size }} {
+
+    }
+</style> {% endcomment %}
+
+<script>
+  // Function to set recently viewed products
+  function setRecentlyViewedPdp() {
+      const pdpData = {
+          productTitle: "{{ product.title }}",
+          productImg: "{{ product.featured_image | img_url: '500x' }}",
+          productIds: "{{ product.id }}",
+          productVariantImage: [
+              {% for variant in product.variants %}
+                  "{{ variant.featured_image.src | image_url }}"{% unless forloop.last %},{% endunless %}
+              {% endfor %}
+          ],
+          productPrice: "{{ product.price | money }}",
+          productUrl: "{{ product.url }}",
+          productColorVariants: [
+              {% for variant in product.variants %}
+                  "{{ variant.option1 }}"{% if forloop.last %}{% else %},{% endif %}
+              {% endfor %}
+          ],
+          productSizeVariants: [
+              {% for variant in product.variants %}
+                  "{{ variant.option2 }}"{% if forloop.last %}{% else %},{% endif %}
+              {% endfor %}
+          ],
+          productVariantId: [
+              {% for variant in product.variants %}
+                  "{{ variant.id }}"{% if forloop.last %}{% else %},{% endif %}
+              {% endfor %}
+          ],
+      };
+
+
+      const productArr = [];
+      let jsonResp, jsonRespArr, jsonRespArrStr;
+      const numberOfProduct = 4;
+      productArr.push(pdpData);
+      const currPdpTitle = pdpData.productTitle;
+      const pdpDataString = JSON.stringify(productArr);
+      const localData = localStorage.getItem('recently_viewed');
+
+      if (localData == null) {
+          localStorage.setItem('recently_viewed', pdpDataString);
+      } else {
+          const oldPdpData = localStorage.getItem('recently_viewed');
+
+          // Parse oldPdpData to extract product IDs
+          const oldPdpDataParsed = JSON.parse(oldPdpData);
+
+          const countPdpData = (oldPdpData.match(/productTitle/g) || []).length;
+          const reVisitPdp = oldPdpData.includes(currPdpTitle);
+          if (countPdpData < numberOfProduct && !reVisitPdp) {
+              jsonResp = JSON.parse(oldPdpData);
+              jsonRespArr = jsonResp.concat(productArr);
+              jsonRespArrStr = JSON.stringify(jsonRespArr);
+              localStorage.setItem('recently_viewed', jsonRespArrStr);
+          } else if (countPdpData >= numberOfProduct && !reVisitPdp) {
+              jsonResp = JSON.parse(oldPdpData);
+              jsonResp.shift();
+              jsonRespArr = jsonResp.concat(productArr);
+              jsonRespArrStr = JSON.stringify(jsonRespArr);
+              localStorage.setItem('recently_viewed', jsonRespArrStr);
+          }
+      }
+  }
+
+  setRecentlyViewedPdp();
+</script>
+
+<div class="recently-title page-width">
+  <h4 class="text-upper title inline-richtext scroll-trigger animate--slide-in mt-0 mb-15">Recently Viewed</h4>
+</div>
+<div class="page-width">
+  <div class="js-recentPdpBlock grid product-grid grid--4-col-desktop grid--2-col-tablet-down"></div>
+</div>
+
+<script>
+    // Function to get recently viewed products
+    function getRecentPdp() {
+        const pdpData = JSON.parse(localStorage.getItem('recently_viewed')) || [];
+        const recentViewHtml = [];
+  
+        pdpData.forEach(function(item, i) {
+
+            if (!item.productColorVariants || !item.productVariantImage) {
+                console.error("Missing product color variants or variant images.");
+                return;
+            }
+          let colorImageMap = {};
+          item.productColorVariants.forEach((color, index) => {
+              if (item.productVariantImage[index]) {
+                  colorImageMap[color] = item.productVariantImage[index];
+              } else {
+                  colorImageMap[color] = '';
+              }
+          });
+          
+          // Map color to its variant ID
+          let variantId = {};
+          item.productVariantId.forEach((id, index) => {
+              let color = item.productColorVariants[index];
+              if (id) {
+                  variantId[color] = id;
+              } else {
+                  variantId[color] = '';
+              }
+          });
+          
+          // Get unique colors
+          let uniq_product_color = [...new Set(item.productColorVariants)];
+          let uniq_product_size = [...new Set(item.productSizeVariants)];
+          
+          let colorHtml = uniq_product_color.map((color, index) => 
+              `
+              <span
+                class="color-selector"
+                data-product-id="${item.productIds}"
+                data-color="${color}"
+                data-image="${colorImageMap[color]}"
+                style="background:${color};"
+                data-variant-color="${variantId[color]}"
+              >
+              </span>
+              `
+          ).join('');
+
+
+             function cleanArray(arr) {
+                return arr.filter(value => value.length > 0);
+                }
+
+             
+                uniq_product_size = cleanArray(uniq_product_size);
+
+                if (uniq_product_size.length === 0) {
+                    uniq_product_size = [];
+                }
+
+          
+                console.log("Array 2:", uniq_product_size);
+
+             counts = uniq_product_size
+                    console.log(counts.length);
+             sizeHtml = uniq_product_size.map((size, index) => 
+              `
+             <span class="size-selector h6 fw-700" data-size="${size}" data-variant-size="${variantId[size]}">${size}</span>
+              `
+          ).join('');
+          
+          
+            recentViewHtml.push(`
+                <li
+                    id="Slide-{{ section.id }}-{{ forloop.index }}"
+                    class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                    {% if settings.animations_reveal_on_scroll %}
+                    data-cascade
+                    style="--animation-order: {{ forloop.index }};"
+                    {% endif %}
+                >
+                    {% render 'card-product-view', 
+                        product_url: "${item.productUrl}",
+                        product_img: "${item.productImg}",
+                        product_title: "${item.productTitle}",
+                        product_price: "${item.productPrice}",
+                        product_colors: "${colorHtml}",
+                        product_size: "${sizeHtml}",
+                       data_product_id: "${item.productIds}",
+                       count_size: "${counts.length}"
+                    %}
+                </li>
+            `);
+        });
+
+        const recentBlock = `${recentViewHtml.join('')}`;
+        const contentBlock = document.querySelectorAll('.js-recentPdpBlock');
+        contentBlock.forEach(element => {
+            element.innerHTML = recentBlock;
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', getRecentPdp);
+</script>
+
+{% schema %}
+{
+  "name": "Recently product view",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "presets": [
+    {
+      "name": "Recently product view"
+    }
+  ]
+}
+{% endschema %}

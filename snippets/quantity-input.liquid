@@ -15,10 +15,10 @@
     <span class="visually-hidden">
       {{- 'products.product.quantity.decrease' | t: product: variant.title | escape -}}
     </span>
-    {% render 'icon-minus' %}
+    {% render 'mins-icon' %}
   </button>
   <input
-    class="quantity__input"
+    class="quantity__input fw-700"
     data-quantity-variant-id="{{ variant.id }}"
     type="number"
     name="updates[{{ variant_id }}]"
@@ -40,7 +40,7 @@
     <span class="visually-hidden">
       {{- 'products.product.quantity.increase' | t: product: variant.title | escape -}}
     </span>
-    {% render 'icon-plus' %}
+    {% render 'puls-icon' %}
   </button>
   {%- render 'progress-bar' -%}
 </quantity-input>

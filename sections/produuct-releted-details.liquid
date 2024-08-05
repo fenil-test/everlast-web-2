@@ -1,0 +1,60 @@
+{{ 'product-releted-details.css' |  asset_url |  stylesheet_tag }}
+
+
+<div class="product-related-multirow">
+    {% assign meta_image = product.metafields.custom.product_page_image %}
+    {% assign meta_heading = product.metafields.custom.product_headings %}
+    {% assign meta_text = product.metafields.custom.product_des %}
+    
+    
+    {% for image in meta_image.value %}
+        {%  assign  lopp  = forloop.index0 %}
+        <div class="product-item">
+            <img
+                srcset="
+                {%- if image.width >= 375 -%}{{ image | image_url: width: 375 }} 375w,{%- endif -%}
+                {%- if image.width >= 750 -%}{{ image | image_url: width: 750 }} 750w,{%- endif -%}
+                {%- if image.width >= 1100 -%}{{ image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                {%- if image.width >= 1500 -%}{{ image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                {%- if image.width >= 1780 -%}{{ image | image_url: width: 1780 }} 1780w,{%- endif -%}
+                {%- if image.width >= 2000 -%}{{ image | image_url: width: 2000 }} 2000w,{%- endif -%}
+                {%- if image.width >= 3000 -%}{{ image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                {%- if image.width >= 3840 -%}{{ image | image_url: width: 3840 }} 3840w,{%- endif -%}
+                {{ image | image_url }} {{ image.width }}w
+                "
+                src="{{ image | image_url: width: 1500 }}"
+                loading="lazy"
+                alt="{{ image.alt | escape }}"
+                width="{{ image.width }}"
+                height="{{ image.width | divided_by: image.aspect_ratio }}"
+            >
+            <div class="w-100 d-flex j-center a-center f-column">
+                <div class="text-content">
+                    <h3 class="cd-black text-upper">{{ meta_heading.value[lopp] }}</h3>
+                    <span class="cd-black">{{ meta_text.value[lopp] }}</span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Product releted details",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+   
+  ],
+  "blocks": [
+   
+  ],
+  "presets": [
+    {
+      "name": "Product releted details"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+.product-related-multirow {
+    display: flex;
+    flex-wrap: wrap;
+}
+.product-related-multirow .product-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+.product-related-multirow .product-item img {
+    max-width: 50%;
+    height: auto;
+}
+.product-related-multirow .product-item .text-content {
+    padding-left: 20px;
+    flex: 1;
+    max-width: 546px;
+    letter-spacing: 0;
+    gap: 40px;
+    display: flex;
+    flex-direction: column;
+}
+.product-related-multirow .product-item h3, .product-item span {
+    line-height: 30px;
+    letter-spacing: 0.01em;
+}
+
+.product-related-multirow .product-item:nth-child(even){
+    flex-direction: row-reverse;
+}

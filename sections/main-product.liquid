@@ -1,3 +1,9 @@
+<style>
+  .section-{{ section.id }}-padding{
+    overflow:hidden;
+  }
+</style>
+
 <section
   id="MainProduct-{{ section.id }}"
   class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
@@ -12,7 +18,7 @@
   {% unless product.has_only_default_variant %}
     {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
     {{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
-    {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
+    {{ 'component-swatch.css' | asset_url | stylesheet_tag }} 
   {% endunless %}
   {%- if product.quantity_price_breaks_configured? -%}
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
@@ -67,7 +73,16 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+    <div class="product a-center product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+      
+      <size-chart>
+        {% assign parentcollection = product.metafields.custom.sizechart.value %}
+        <div class="sizechart-modal">
+          <img class="" src="{{ parentcollection.sizechart |  img_url: "master" }}" >
+          <span id="ModalClose-sizechart"> {% render 'close-icon' %}</span>
+        </div>
+      </size-chart> 
+      
       <div class="grid__item product__media-wrapper">
         {% render 'product-media-gallery', variant_images: variant_images %}
       </div>
@@ -84,16 +99,9 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
-              {%- when 'text' -%}
-                <p
-                  class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
-                  {{ block.shopify_attributes }}
-                >
-                  {{- block.settings.text -}}
-                </p>
               {%- when 'title' -%}
                 <div class="product__title" {{ block.shopify_attributes }}>
-                  <h1>{{ product.title | escape }}</h1>
+                  <h3>{{ product.title | escape }}</h3>
                   <a href="{{ product.url }}" class="product__title">
                     <h2 class="h1">
                       {{ product.title | escape }}
@@ -128,6 +136,13 @@
                     <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                     {{ form | payment_terms }}
                   {%- endform -%}
+                </div> 
+                <div class="d-flex a-center g-10 ">
+                  {% comment %} {% assign interest_free = product.metafields.custom.interest_free.value | strip_html %}
+                  <span>{{ interest_free }}</span> {% endcomment %}
+                  <span>{{ product.metafields.custom.interest_free | metafield_tag  }}</span>
+                  <img src="https://cdn.shopify.com/s/files/1/0701/3518/5664/files/Union.png?v=1721107602" alt="" width="88px" height="16px">
+                  {%  render 'product-i-icon' %}
                 </div>
               {%- when 'inventory' -%}
                 <p
@@ -185,9 +200,15 @@
                   {%- endif -%}
                 </p>
               {%- when 'description' -%}
+                {% render 'shipping-time' %}
                 {%- if product.description != blank -%}
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
                     {{ product.description }}
+                  </div>
+                  <div class="product__description-btn d-flex a-center">
+                      <span class="font-ex h6 fw-700 product__description-item1">READ MORE</span>
+                      <span class="font-ex h6 fw-700 product__description-item2">READ LESS</span>
+                      {% render 'right-black-icon' %}
                   </div>
                 {%- endif -%}
               {%- when 'sku' -%}
@@ -221,7 +242,46 @@
                   </details>
                 </div>
               {%- when 'quantity_selector' -%}
-                <div
+               
+              {%- when 'popup' -%}
+                <modal-opener
+                  class="product-popup-modal__opener quick-add-hidden"
+                  data-modal="#PopupModal-{{ block.id }}"
+                  {{ block.shopify_attributes }}
+                >
+                  <button
+                    id="ProductPopup-{{ block.id }}"
+                    class="product-popup-modal__button link"
+                    type="button"
+                    aria-haspopup="dialog"
+                  >
+                    {{ block.settings.text | default: block.settings.page.title | escape }}
+                  </button>
+                </modal-opener>
+              {%- when 'share' -%}
+                {% liquid
+                  assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
+                  render 'share-button', block: block, share_link: share_url
+                %}
+
+              {%- when 'variant_picker' -%}
+                {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+              {%- when 'buy_buttons' -%}
+                  <div class="d-flex  g-10 product-add-buy">
+                    {%- render 'buy-buttons',
+                    block: block,
+                    product: product,
+                    product_form_id: product_form_id,
+                    section_id: section.id,
+                    show_pickup_availability: true
+                  -%}
+
+                  <div class="fav-product d-flex a-center j-center">
+                    <button class="font-ex h6">Favorite</button>
+                    {%  render 'fav-icon' %}
+                  </div>
+
+                  <div
                   id="Quantity-Form-{{ section.id }}"
                   class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
                   {{ block.shopify_attributes }}
@@ -249,10 +309,10 @@
                         <span class="visually-hidden">
                           {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
                         </span>
-                        {% render 'icon-minus' %}
+                        {% render 'puls-icon' %}
                       </button>
                       <input
-                        class="quantity__input"
+                        class="quantity__input fw-700"
                         type="number"
                         name="quantity"
                         id="Quantity-{{ section.id }}"
@@ -271,7 +331,7 @@
                         <span class="visually-hidden">
                           {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
                         </span>
-                        {% render 'icon-plus' %}
+                        {% render 'puls-icon' %}
                       </button>
                     </quantity-input>
                     {%- liquid
@@ -429,37 +489,7 @@
                     </volume-pricing>
                   {%- endif -%}
                 </div>
-              {%- when 'popup' -%}
-                <modal-opener
-                  class="product-popup-modal__opener quick-add-hidden"
-                  data-modal="#PopupModal-{{ block.id }}"
-                  {{ block.shopify_attributes }}
-                >
-                  <button
-                    id="ProductPopup-{{ block.id }}"
-                    class="product-popup-modal__button link"
-                    type="button"
-                    aria-haspopup="dialog"
-                  >
-                    {{ block.settings.text | default: block.settings.page.title | escape }}
-                  </button>
-                </modal-opener>
-              {%- when 'share' -%}
-                {% liquid
-                  assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
-                  render 'share-button', block: block, share_link: share_url
-                %}
-
-              {%- when 'variant_picker' -%}
-                {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
-              {%- when 'buy_buttons' -%}
-                {%- render 'buy-buttons',
-                  block: block,
-                  product: product,
-                  product_form_id: product_form_id,
-                  section_id: section.id,
-                  show_pickup_availability: true
-                -%}
+                  </div>
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -650,6 +680,8 @@
       </div>
     </div>
 
+   
+
     {% render 'product-media-modal', variant_images: variant_images %}
 
     {% assign popups = section.blocks | where: 'type', 'popup' %}
@@ -677,6 +709,8 @@
         </div>
       </modal-dialog>
     {%- endfor -%}
+
+    
 
     {%- if product.media.size > 0 -%}
       <script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>
@@ -743,7 +777,70 @@
       }
     </script>
   </div>
+  <div class="w-100 product-releted-details">
+    {% assign data = product.metafields.custom.product_image |  handleize %}
+    {% assign heading = product.metafields.custom.product_sec.value %}
+    {% assign text = product.metafields.custom.product_sec_des.value %}
+       {% if data contains 'image' %}
+    {% assign image = product.metafields.custom.product_image.value %}
+
+         <img
+          srcset="
+            {%- if image.width >= 375 -%}{{ image | image_url: width: 375 }} 375w,{%- endif -%}
+            {%- if image.width >= 750 -%}{{ image | image_url: width: 750 }} 750w,{%- endif -%}
+            {%- if image.width >= 1100 -%}{{ image | image_url: width: 1100 }} 1100w,{%- endif -%}
+            {%- if image.width >= 1500 -%}{{ image | image_url: width: 1500 }} 1500w,{%- endif -%}
+            {%- if image.width >= 1780 -%}{{ image | image_url: width: 1780 }} 1780w,{%- endif -%}
+            {%- if image.width >= 2000 -%}{{ image | image_url: width: 2000 }} 2000w,{%- endif -%}
+            {%- if image.width >= 3000 -%}{{ image | image_url: width: 3000 }} 3000w,{%- endif -%}
+            {%- if image.width >= 4000 -%}{{ image | image_url: width: 4000 }} 4000w,{%- endif -%}
+            {{ image | image_url }} {{ image.width }}w
+          "
+          sizes="100vw"
+          src="{{ image | image_url: width: 100 }}"
+          loading="lazy"
+          alt="{{ image.alt | escape }}"
+          width="{{ image.width }}"
+          height="{{ image.width | divided_by: image.aspect_ratio }}"
+          class="w-100 product-releted-image"
+        >
+        {% else %}
+          {% assign video = product.metafields.custom.product_image.value %}
+
+         {{ video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
+       {% endif %}
+    <div class="product-releted-text">
+      <h3 class="c-white text-upper"> {{ heading }}</h3>
+      <p class="c-white"> {{ text }}</p>
+    </div>
+  </div>
 </section>
+
+
+{% comment %} {% assign deskvideoHandle = product.metafields.custom.product_banner_image | handle %}
+{% assign videoHandle = product.metafields.custom.product_banner_mobile_image | handle %}
+<div class="mg-hide">
+  {% if deskvideoHandle contains 'video' %}
+    {% assign media1 = product.metafields.custom.product_banner_image.value %}
+    {{
+      media1
+      | video_tag:
+        image_size: 'master',
+        controls: false,
+        loop: true,
+        autoplay: true,
+        muted: muted,
+        playsinline: true
+    }}
+
+  {% else %}
+    <img
+      src="{{ product.metafields.custom.product_banner_image | image_url }}"
+      width=""
+      height=""
+      loading="lazy"
+    >
+  {% endif %} {% endcomment %}
 
 {% schema %}
 {

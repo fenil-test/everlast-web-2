@@ -58,7 +58,7 @@
     </a>
     <ul
       id="Slider-Gallery-{{ section.id }}"
-      class="product__media-list contains-media grid grid--peek list-unstyled slider slider--mobile"
+      class="product__media-list single-item contains-media grid grid--peek list-unstyled slider slider--mobile"
       role="list"
     >
       {%- if product.selected_or_first_available_variant.featured_media != null -%}
@@ -228,6 +228,7 @@
               aria-current="true"
               aria-controls="GalleryViewer-{{ section.id }}"
               aria-describedby="{{ thumbnail_id }}"
+              data-slide="0"
             >
               {{
                 featured_media.preview_image
@@ -276,7 +277,7 @@
                 Thumbnail-{{ section.id }}-{{ forloop.index }}
               {%- endcapture -%}
               <button
-                class="thumbnail global-media-settings global-media-settings--no-shadow"
+                class="thumbnail global-media-settings global-media-settings--no-shadow slide"
                 aria-label="{%- if media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media_index }}{%- elsif media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media_index }}{%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media_index }}{%- endif -%}"
                 {% if media == product.selected_or_first_available_variant.featured_media
                   or product.selected_or_first_available_variant.featured_media == null
@@ -286,6 +287,8 @@
                 {% endif %}
                 aria-controls="GalleryViewer-{{ section.id }}"
                 aria-describedby="{{ thumbnail_id }}"
+                data-slide="{{ forloop.index | minus: 3 }}"
+                
               >
                 {{
                   media.preview_image
@@ -316,3 +319,12 @@
     </slider-component>
   {%- endif -%}
 </media-gallery>
+
+<script>
+  $('.thumbnail').click(function(){
+    var slideIndex = $(this).data('slide');
+    console.log(slideIndex)
+    $('.single-item').slick('slickGoTo', slideIndex);
+  });
+</script>
+

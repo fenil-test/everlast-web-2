@@ -5,3 +5,84 @@
 .related-products__heading {
   margin: 0 0 3rem;
 }
+
+.slider-hover:hover .size {
+  bottom: 0;
+}
+
+.collection-related-products .size-selector {
+  border: 1px solid #000000;
+  max-width: 80px;
+  width: 100%;
+  min-height: 35px;
+  display: inline-block;
+  height: 100%;
+  line-height: 35px;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+.collection-related-products .card__inner .size{
+  background: #EAEAEA80;
+  width: 100%;
+  padding: 20px 0px;
+  text-align: center;
+}
+
+
+.collection-related-products .card__inner .size {
+  background: #eaeaea80;
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  position: absolute;
+  bottom: -90%;
+  flex-wrap: wrap;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 20px 15px;
+}
+
+
+.collection-related-products .grid__item:hover .size{
+  bottom: 0;
+ 
+}
+
+.collection-related-products .card__inner .size .size-selector:hover{
+  color: #FFFFFF;
+  background: #000000;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.collection-related-products .size .button--full-width {
+  min-height: 35px;
+  min-width: inherit;
+  min-width: 80px;
+  padding: 0;
+}
+
+.slider-hover:hover .size {
+  bottom: 0;
+}
+
+.collection-related-products .card__inner{
+  overflow: hidden;
+}
+
+.collection-related-products .card__heading a:after{
+  display: none;
+}
+
+.collection-related-products .color-selector{
+  width: 10px;
+  height: 10px;
+  border: 1px solid #0000001A;
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+}

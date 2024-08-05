@@ -4,8 +4,8 @@
     "theme_name": "Dawn",
     "theme_version": "14.0.0",
     "theme_author": "Shopify",
-    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
-    "theme_support_url": "https:\/\/support.shopify.com\/"
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://support.shopify.com/"
   },
   {
     "name": "t:settings_schema.logo.name",
@@ -102,6 +102,361 @@
     ]
   },
   {
+    "name": "Fonts Brand Guide",
+    "settings": [
+      {
+        "type": "header",
+        "content": "CUSTOM FONT FAMILY"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_custom_font",
+        "label": "Enable Custom Font",
+        "info": "This setting will replace the Shopify Typography fonts with custom fonts"
+      },
+      {
+        "type": "text",
+        "id": "header_font_name",
+        "label": "Header Font Name",
+        "info": "Enter the font name that will be used in the styling. Example:- 'Roboto', sans-serif"
+      },
+      {
+        "type": "text",
+        "id": "header_font_url",
+        "label": "Header Font URL",
+        "info": "Enter the Google fonts @import URL OR Shopify assets fonts URL. [Example](https:\/\/tinyurl.com\/26u6dqpx)"
+      },
+      {
+        "type": "range",
+        "id": "header_font_weight",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "default": 400,
+        "label": "Header Font Weight"
+      },
+      {
+        "type": "text",
+        "id": "body_font_name",
+        "label": "Body Font Name",
+        "info": "Enter the font name that will be used in the styling. Example:- 'Roboto', sans-serif"
+      },
+      {
+        "type": "text",
+        "id": "body_font_url",
+        "label": "Body Font URL",
+        "info": "Enter the Google fonts @import URL OR Shopify assets fonts URL. [Example](https:\/\/tinyurl.com\/26u6dqpx)"
+      },
+      {
+        "type": "range",
+        "id": "body_font_weight",
+        "min": 100,
+        "max": 900,
+        "step": 100,
+        "default": 400,
+        "label": "Body Font Weight"
+      },
+      {
+        "type": "header",
+        "content": "HEADING FONT SIZE DESKTOP"
+      },
+      {
+        "type": "range",
+        "id": "h1_desktop_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 50,
+        "unit": "px",
+        "label": "H1 Desktop Font Size"
+      },
+      {
+        "type": "range",
+        "id": "h2_desktop_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 42,
+        "unit": "px",
+        "label": "H2 Desktop Font Size"
+      },
+      {
+        "type": "range",
+        "id": "h3_desktop_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 36,
+        "unit": "px",
+        "label": "H3 Desktop Font Size"
+      },
+      {
+        "type": "range",
+        "id": "h4_desktop_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 32,
+        "unit": "px",
+        "label": "H4 Desktop Font Size"
+      },
+      {
+        "type": "range",
+        "id": "h5_desktop_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 18,
+        "unit": "px",
+        "label": "H5 Desktop Font Size"
+      },
+      {
+        "type": "range",
+        "id": "h6_desktop_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 16,
+        "unit": "px",
+        "label": "H6 Desktop Font Size"
+      },
+      {
+        "type": "header",
+        "content": "HEADING FONT SIZE MOBILE"
+      },
+      {
+        "type": "range",
+        "id": "h1_mobile_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 36,
+        "unit": "px",
+        "label": "H1 Mobile Font Size"
+      },
+      {
+        "type": "range",
+        "id": "h2_mobile_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 32,
+        "unit": "px",
+        "label": "H2 Mobile Font Size"
+      },
+      {
+        "type": "range",
+        "id": "h3_mobile_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 30,
+        "unit": "px",
+        "label": "H3 Mobile Font Size"
+      },
+      {
+        "type": "range",
+        "id": "h4_mobile_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 26,
+        "unit": "px",
+        "label": "H4 Mobile Font Size"
+      },
+      {
+        "type": "range",
+        "id": "h5_mobile_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 18,
+        "unit": "px",
+        "label": "H5 Mobile Font Size"
+      },
+      {
+        "type": "range",
+        "id": "h6_mobile_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 16,
+        "unit": "px",
+        "label": "H6 Mobile Font Size"
+      },
+      {
+        "type": "header",
+        "content": "BODY FONT SIZE DESKTOP"
+      },
+      {
+        "type": "range",
+        "id": "body_desktop_1_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 22,
+        "unit": "px",
+        "label": "Medium Body Desktop Font Size"
+      },
+      {
+        "type": "range",
+        "id": "body_desktop_2_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 16,
+        "unit": "px",
+        "label": "Regular Body Desktop Font Size"
+      },
+      {
+        "type": "range",
+        "id": "body_desktop_3_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 12,
+        "unit": "px",
+        "label": "Small Body Desktop Font Size"
+      },
+      {
+        "type": "header",
+        "content": "BODY FONT SIZE MOBILE"
+      },
+      {
+        "type": "range",
+        "id": "body_mobile_1_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 22,
+        "unit": "px",
+        "label": "Medium Body Mobile Font Size"
+      },
+      {
+        "type": "range",
+        "id": "body_mobile_2_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 16,
+        "unit": "px",
+        "label": "Regular Body Mobile Font Size"
+      },
+      {
+        "type": "range",
+        "id": "body_mobile_3_size",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 12,
+        "unit": "px",
+        "label": "Small Body Mobile Font Size"
+      },
+      {
+        "type": "header",
+        "content": "BODY LINE HEIGHT DESKTOP"
+      },
+      {
+        "type": "range",
+        "id": "body_desktop_1_line_height",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 30,
+        "unit": "px",
+        "label": "Medium Body Desktop Line Height"
+      },
+      {
+        "type": "range",
+        "id": "body_desktop_2_line_height",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 28,
+        "unit": "px",
+        "label": "Regular Body Desktop Line Height"
+      },
+      {
+        "type": "range",
+        "id": "body_desktop_3_line_height",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 28,
+        "unit": "px",
+        "label": "Small Body Desktop Line Height"
+      },
+      {
+        "type": "header",
+        "content": "BODY LINE HEIGHT MOBILE"
+      },
+      {
+        "type": "range",
+        "id": "body_mobile_1_line_height",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 30,
+        "unit": "px",
+        "label": "Medium Body Mobile Line Height"
+      },
+      {
+        "type": "range",
+        "id": "body_mobile_2_line_height",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 28,
+        "unit": "px",
+        "label": "Regular Body Mobile Line Height"
+      },
+      {
+        "type": "range",
+        "id": "body_mobile_3_line_height",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 28,
+        "unit": "px",
+        "label": "Small Body Mobile Line Height"
+      }
+    ]
+  },
+  {
+    "name": "Colors Brand Guide",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "primary_color",
+        "label": "Primary color"
+      },
+      {
+        "type": "color",
+        "id": "secondary_color",
+        "label": "Secondary color"
+      },
+      {
+        "type": "color",
+        "id": "tertiary_color",
+        "label": "Tertiary color"
+      },
+      {
+        "type": "color",
+        "id": "quaternary_color",
+        "label": "Quaternary color"
+      },
+      {
+        "type": "color",
+        "id": "quinary_color",
+        "label": "Quinary color"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.typography.name",
     "settings": [
       {
@@ -155,9 +510,9 @@
         "type": "range",
         "id": "page_width",
         "min": 1000,
-        "max": 1600,
-        "step": 100,
-        "default": 1200,
+        "max": 1920,
+        "step": 10,
+        "default": 1920,
         "unit": "px",
         "label": "t:settings_schema.layout.settings.page_width.label"
       },

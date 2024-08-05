@@ -5,16 +5,16 @@
   {% render 'header-mega-menu' %}
 {% endcomment %}
 
-<nav class="header__inline-menu">
-  <ul class="list-menu list-menu--inline" role="list">
+<nav class="header__inline-menu h-100">
+  <ul class="list-menu list-menu--inline h-100" role="list">
     {%- for link in section.settings.menu.links -%}
-      <li>
+      <li class="h-100">
         {%- if link.links != blank -%}
-          <header-menu>
-            <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
-              <summary
+          <header-menu class="h-100">
+            <div id="Details-HeaderMenu-{{ forloop.index }}" class="h-100 mega-menu">
+              <div
                 id="HeaderMenu-{{ link.handle }}"
-                class="header__menu-item list-menu__item link focus-inset"
+                class="h-100 header__menu-item font-ex list-menu__item link focus-inset"
               >
                 <span
                   {%- if link.child_active %}
@@ -24,14 +24,14 @@
                   {{- link.title | escape -}}
                 </span>
                 {% render 'icon-caret' %}
-              </summary>
+              </div>
               <div
                 id="MegaMenu-Content-{{ forloop.index }}"
                 class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
                 tabindex="-1"
               >
                 <ul
-                  class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                  class="d-flex g-10 mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
                   role="list"
                 >
                   {%- for childlink in link.links -%}
@@ -39,13 +39,67 @@
                       <a
                         id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                         href="{{ childlink.url }}"
-                        class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                        class="fw-700 h5 mega-menu__link mega-menu__link--level-2 mb-10 link{% if childlink.current %} mega-menu__link--active{% endif %}"
                         {% if childlink.current %}
                           aria-current="page"
                         {% endif %}
                       >
                         {{ childlink.title | escape }}
                       </a>
+                      {% for block in section.blocks %}
+                        {% assign megamenu_text = link.title  %}
+                        {% assign megamenu_list = block.settings.menu_text  %}
+                        {% if megamenu_text == megamenu_list %}
+                          {%- for link in block.settings.menu1.links -%}
+                            {% assign child_text = childlink.title  %}
+                            {% assign child_list = block.settings.menu_text1  %}
+                            {% if child_text == child_list %}
+                               <a href="{{ link.url }}" class="mt-5 text-decoration d-block c-black text-none font-ex">{{ link.title }}</a>
+                            {% endif %}
+                         {% endfor %}
+                          
+                          {%- for link in block.settings.menu2.links -%}
+                            {% assign child_text = childlink.title  %}
+                            {% assign child_list = block.settings.menu_text2  %}
+                            {% if child_text == child_list %}
+                               <a href="{{ link.url }}" class="mt-5 text-decoration d-block c-black text-none font-ex">{{ link.title }}</a>
+                            {% endif %}
+                         {% endfor %}
+                          
+                          {%- for link in block.settings.menu3.links -%}
+                            {% assign child_text = childlink.title  %}
+                            {% assign child_list = block.settings.menu_text3  %}
+                            {% if child_text == child_list %}
+                               <a href="{{ link.url }}" class="mt-5 text-decoration d-block c-black text-none font-ex">{{ link.title }}</a>
+                            {% endif %}
+                         {% endfor %}
+                          
+                          {%- for link in block.settings.menu4.links -%}
+                            {% assign child_text = childlink.title  %}
+                            {% assign child_list = block.settings.menu_text4  %}
+                            {% if child_text == child_list %}
+                               <a href="{{ link.url }}" class="mt-5 text-decoration d-block c-black text-none font-ex">{{ link.title }}</a>
+                            {% endif %}
+                         {% endfor %}
+                          
+                          {%- for link in block.settings.menu5.links -%}
+                            {% assign child_text = childlink.title  %}
+                            {% assign child_list = block.settings.menu_text5 %}
+                            {% if child_text == child_list %}
+                               <a href="{{ link.url }}" class="mt-5 text-decoration d-block c-black text-none font-ex">{{ link.title }}</a>
+                            {% endif %}
+                         {% endfor %}
+                          
+                          {%- for link in block.settings.menu6.links -%}
+                            {% assign child_text = childlink.title  %}
+                            {% assign child_list = block.settings.menu_text6  %}
+                            {% if child_text == child_list %}
+                               <a href="{{ link.url }}" class="text-decoration d-block c-black text-none font-ex">{{ link.title }}</a>
+                            {% endif %}
+                         {% endfor %}
+                          
+                        {% endif %}
+                      {% endfor %}
                       {%- if childlink.links != blank -%}
                         <ul class="list-unstyled" role="list">
                           {%- for grandchildlink in childlink.links -%}
@@ -62,19 +116,21 @@
                               </a>
                             </li>
                           {%- endfor -%}
+                          
                         </ul>
                       {%- endif -%}
+                      
                     </li>
                   {%- endfor -%}
                 </ul>
               </div>
-            </details>
+            </div>
           </header-menu>
         {%- else -%}
           <a
             id="HeaderMenu-{{ link.handle }}"
             href="{{ link.url }}"
-            class="header__menu-item list-menu__item link link--text focus-inset"
+            class="header__menu-item h-100 font-ex h6 list-menu__item link link--text focus-inset"
             {% if link.current %}
               aria-current="page"
             {% endif %}

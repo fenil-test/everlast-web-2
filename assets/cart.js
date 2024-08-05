@@ -172,6 +172,9 @@ class CartItems extends HTMLElement {
           trapFocus(cartDrawerWrapper, document.querySelector('.cart-item__name'));
         }
 
+
+        
+
         publish(PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items', cartData: parsedState, variantId: variantId });
       })
       .catch(() => {
@@ -181,6 +184,17 @@ class CartItems extends HTMLElement {
       })
       .finally(() => {
         this.disableLoading(line);
+        $('.mycollection1').slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          // speed: 1000,
+          dots: false,
+          arrows: true,
+          variableWidth: true,
+          prevArrow: $('.drawer-prev-btn'),
+          nextArrow: $('.drawer-next-btn'),
+        });
       });
   }
 

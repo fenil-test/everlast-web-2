@@ -96,6 +96,28 @@ if (!customElements.get('product-form')) {
             if (this.cart && this.cart.classList.contains('is-empty')) this.cart.classList.remove('is-empty');
             if (!this.error) this.submitButton.removeAttribute('aria-disabled');
             this.querySelector('.loading__spinner').classList.add('hidden');
+            function initializeSlider() {
+              if (
+                !$(".mycollection1").hasClass(
+                  "slick-initialized"
+                )
+              ) {
+                setTimeout(() => {
+                  $('.mycollection1').slick({
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    // speed: 1000,
+                    dots: false,
+                    arrows: true,
+                    variableWidth: true,
+                    prevArrow: $('.drawer-prev-btn'),
+                    nextArrow: $('.drawer-next-btn'),
+                  });
+                }, 1000);
+              }
+            }
+            initializeSlider()
           });
       }
 

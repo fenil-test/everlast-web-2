@@ -5,19 +5,48 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement-bar-0": {
+        "announcement_Xe43W9": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "FREE SHIPPING ON ALL ORDERS OVER $100",
             "link": ""
+          }
+        },
+        "text_aYyQpf": {
+          "type": "text",
+          "settings": {
+            "text1": "LIVE CHAT"
+          }
+        },
+        "text_PbMKAX": {
+          "type": "text",
+          "settings": {
+            "text1": "Blog"
+          }
+        },
+        "text_eA6HjJ": {
+          "type": "text",
+          "settings": {
+            "text1": "TEAM EVERLAST"
+          }
+        },
+        "text_j4fzQq": {
+          "type": "text",
+          "settings": {
+            "text1": "WHOLESALE"
           }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "announcement_Xe43W9",
+        "text_aYyQpf",
+        "text_PbMKAX",
+        "text_eA6HjJ",
+        "text_j4fzQq"
       ],
       "settings": {
         "color_scheme": "scheme-1",
+        "body_text": "#000000",
         "show_line_separator": true,
         "show_social": false,
         "auto_rotate": false,
@@ -29,9 +58,9 @@
     "header": {
       "type": "header",
       "settings": {
-        "logo_position": "middle-left",
-        "menu": "main-menu",
-        "menu_type_desktop": "dropdown",
+        "logo_position": "middle-center",
+        "menu": "everlast-web",
+        "menu_type_desktop": "mega",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
         "color_scheme": "scheme-1",

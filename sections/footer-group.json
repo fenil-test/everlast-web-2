@@ -4,19 +4,63 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "image_B6BFAr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/hjlVector.png",
+            "image_width": 55,
+            "alignment": "center"
+          }
+        },
+        "link_list_FdRFyf": {
+          "type": "link_list",
+          "settings": {
+            "heading": "GET HELP",
+            "menu": "get-help"
+          }
+        },
+        "link_list_7nAMGx": {
+          "type": "link_list",
+          "settings": {
+            "heading": "ABOUT EVERLAST",
+            "menu": "about-everlast"
+          }
+        },
+        "text_6iWNri": {
+          "type": "text",
+          "settings": {
+            "heading": "",
+            "subtext": "<p>SIGN UP FOR NEWS & OFFERS<\/p>",
+            "subtext1": "<p>GET 15% OFF YOUR FIRST ORDER<\/p>"
+          }
+        },
+        "brand_information_Ufr9Ez": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": true
+          }
+        }
+      },
+      "block_order": [
+        "image_B6BFAr",
+        "link_list_FdRFyf",
+        "link_list_7nAMGx",
+        "text_6iWNri",
+        "brand_information_Ufr9Ez"
+      ],
       "settings": {
-        "color_scheme": "scheme-1",
-        "newsletter_enable": true,
+        "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": true,
-        "show_social": true,
+        "show_social": false,
         "enable_country_selector": true,
         "enable_language_selector": true,
         "payment_enable": true,
         "show_policy": false,
         "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     }
   },

@@ -19,6 +19,7 @@
 {%- endif -%}
 
 <style>
+
   header-drawer {
     justify-self: start;
     margin-left: -1.2rem;
@@ -96,13 +97,13 @@
 
   @media screen and (min-width: 990px) {
     .header {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-top: 0;
+      padding-bottom: 0;
     }
   }
 {%- endstyle -%}
 
-<script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
+{% comment %} <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script> {% endcomment %}
 <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
@@ -147,7 +148,7 @@
       assign localization_forms = true
     endif
   -%}
-  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
+  <header class="top-header header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
     {%- liquid
       if section.settings.menu != blank
         render 'header-drawer'
@@ -162,7 +163,7 @@
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
-          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset mt-30 mb-30">
             {%- if settings.logo != blank -%}
               <div class="header__heading-logo-wrapper">
                 {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
@@ -202,7 +203,7 @@
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
-          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset mt-30 mb-30">
             {%- if settings.logo != blank -%}
               <div class="header__heading-logo-wrapper">
                 {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
@@ -260,7 +261,7 @@
             {%- if customer and customer.has_avatar? -%}
               {{ customer | avatar }}
             {%- else -%}
-              {% render 'icon-account' %}
+              {% render 'account-icon' %}
             {%- endif -%}
           </account-icon>
           <span class="visually-hidden">
@@ -285,9 +286,9 @@
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         {%- liquid
           if cart == empty
-            render 'icon-cart-empty'
+            render 'cart-icon'
           else
-            render 'icon-cart'
+            render 'cart-icon'
           endif
         -%}
         <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
@@ -316,13 +317,15 @@
 
     connectedCallback() {
       this.header = document.querySelector('.section-header');
+      this.megamenu = document.querySelector('.header');
+     
       this.headerIsAlwaysSticky = this.getAttribute('data-sticky-type') === 'always' || this.getAttribute('data-sticky-type') === 'reduce-logo-size';
       this.headerBounds = {};
 
       this.setHeaderHeight();
 
       window.matchMedia('(max-width: 990px)').addEventListener('change', this.setHeaderHeight.bind(this));
-
+        
       if (this.headerIsAlwaysSticky) {
         this.header.classList.add('shopify-section-header-sticky');
       };
@@ -341,6 +344,7 @@
     }
 
     setHeaderHeight() {
+  
       document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
     }
 
@@ -359,6 +363,7 @@
     }
 
     onScroll() {
+      
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
       if (this.predictiveSearch && this.predictiveSearch.isOpen) return;
@@ -384,7 +389,7 @@
         this.header.classList.remove('scrolled-past-header');
         requestAnimationFrame(this.reset.bind(this));
       }
-
+      this.megamenu.style.backgroundColor = 'rgb(229,229,229,28%)';
       this.currentScrollTop = scrollTop;
     }
 
@@ -418,6 +423,10 @@
   }
 
   customElements.define('sticky-header', StickyHeader);
+
+
+
+
 {% endjavascript %}
 
 <script type="application/ld+json">
@@ -457,6 +466,8 @@
       },
       "url": {{ request.origin | append: page.url | json }}
     }
+
+   
   </script>
 {%- endif -%}
 
@@ -647,7 +658,88 @@
   ],
   "blocks": [
     {
-      "type": "@app"
+      "type": "Mega_menu",
+      "name": "t:sections.multicolumn.blocks.column.name",
+      "settings": [
+         {
+          "type": "text",
+          "id": "menu_text",
+          "default": "Enter a text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "menu_text1",
+          "default": "Enter a text",
+          "label": "Text"
+        },
+        {
+          "type": "link_list",
+          "id": "menu1",
+          "default": "main-menu",
+          "label": "t:sections.header.settings.menu.label"
+        },
+        {
+          "type": "text",
+          "id": "menu_text2",
+          "default": "Enter a text",
+          "label": "Text"
+        },
+        {
+          "type": "link_list",
+          "id": "menu2",
+          "default": "main-menu",
+          "label": "t:sections.header.settings.menu.label"
+        },
+        {
+          "type": "text",
+          "id": "menu_text3",
+          "default": "Enter a text",
+          "label": "Text"
+        },
+        {
+          "type": "link_list",
+          "id": "menu3",
+          "default": "main-menu",
+          "label": "t:sections.header.settings.menu.label"
+        },
+        {
+          "type": "text",
+          "id": "menu_text4",
+          "default": "Enter a text",
+          "label": "Text"
+        },
+        {
+          "type": "link_list",
+          "id": "menu4",
+          "default": "main-menu",
+          "label": "t:sections.header.settings.menu.label"
+        },
+        {
+          "type": "text",
+          "id": "menu_text5",
+          "default": "Enter a text",
+          "label": "Text"
+        },
+        {
+          "type": "link_list",
+          "id": "menu5",
+          "default": "main-menu",
+          "label": "t:sections.header.settings.menu.label"
+        },
+        {
+          "type": "text",
+          "id": "menu_text6",
+          "default": "Enter a text",
+          "label": "Text"
+        },
+        {
+          "type": "link_list",
+          "id": "menu6",
+          "default": "main-menu",
+          "label": "t:sections.header.settings.menu.label"
+        }
+      ]
     }
   ]
 }

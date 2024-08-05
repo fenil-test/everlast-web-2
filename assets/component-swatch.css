@@ -2,7 +2,6 @@
 .swatch {
   --swatch--size: var(--swatch-input--size, 4.4rem);
   --swatch--border-radius: var(--swatch-input--border-radius, 50%);
-
   display: block;
   width: var(--swatch--size);
   max-width: 100%;
@@ -13,6 +12,7 @@
   background-origin: border-box;
   border: 0.1rem solid rgba(var(--color-foreground), 0.15);
   border-radius: var(--swatch--border-radius);
+  width: 36px;
 }
 
 .swatch--square {
@@ -22,4 +22,51 @@
 .swatch--unavailable {
   border-style: dashed;
   border-color: rgba(var(--color-foreground), 0.5);
+}
+
+.product-size-guide{
+  color: var(--tertiary-color);
+  font-weight: var(--font-heading-weight);
+  line-height: 12px;
+  letter-spacing: 0.1em;
+  text-align: left;
+}
+
+.product variant-selects{
+  position: relative;
+}
+
+.product variant-selects .product-form__input--swatch{
+  padding: 0px 0px 50px 0px;
+}
+
+.product .product-size-guide{
+  position: absolute;
+  top: 75px;
+  cursor: pointer;
+}
+
+.product .fav-product{
+  min-width:175px;
+  border: 1px solid #000000;
+  background: transparent;
+  max-height: 48px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.product .fav-product button{
+  font-size: 11px;
+  font-weight: var(--font-heading-weight);
+  line-height: 13.2px;
+  letter-spacing: 0.08em;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  margin-right: 6px;
+  background: transparent;
+  padding: 20px 0px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--black-color);
 }

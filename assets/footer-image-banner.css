@@ -1,0 +1,33 @@
+.footer-banner-btn a{
+    margin-right: 12px;
+}
+
+.footer-banner {
+    gap: 26px;
+    position: absolute;
+    top: 67%;
+    left: 50%;
+    min-height: 550px;
+    transform: translate(-50%, -50%);
+}
+
+.footer-image-banner{
+    position: relative;
+}
+
+.footer-banner h4{
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.footer-banner-btn{
+    margin-top: auto;
+    padding: 20px 28px;
+}
+
+.footer-banner img{
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: cover;
+}
