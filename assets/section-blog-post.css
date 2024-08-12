@@ -173,3 +173,39 @@
 .article-template__back:last-child {
   margin-bottom: 3.2rem;
 }
+
+.article-template .landing-artical-text{
+  background: #F4F4F4;
+}
+.article-template .caption-with-letter-spacing{
+  color: #000000;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 12px;
+  letter-spacing: 0.1em;
+  text-align: left;
+  
+}
+
+.article-template .article-template__title{
+font-size: 32px;
+font-weight: 700;
+line-height: 40px;
+text-align: left;
+color: #151515;
+
+}
+
+.article-template .article-template__content{
+  color: #151515;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  
+}
+
+.article-template .artical-details{
+  max-width: 600px;
+}

@@ -3502,6 +3502,14 @@ details-disclosure > details {
   height: 100% !important;
 }
 
+.o-cover{
+  object-fit: cover;
+}
+
+.o-contain{
+  object-fit: contain;
+}
+
 .d-flex{
   display: flex !important;
 }
@@ -3922,4 +3930,8 @@ modal-dialog[open]{
 
 .g-10{
   gap: 10px;
+}
+
+.g-20{
+  gap: 20px;
 }

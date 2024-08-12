@@ -1,0 +1,74 @@
+{{ 'tab-artical-collection.css' | asset_url | stylesheet_tag }}
+
+<div class="tab-artical-collection">
+  <div class="page-width">
+    <div class="">
+      <ul class="tab-artical-list">
+        {% for block in section.blocks %}
+            {%  case block.type %} 
+                {%  when 'collection' %} 
+                    <div class="tab-artical-box">
+                        <div class="tab-artical-image">
+                        <img srcset="
+                                    {% if block.settings.blog.image.width >= 350 %}{{ block.settings.blog.image | image_url: width: 350 }} 350w,{% endif %}
+                                    {% if block.settings.blog.image.width >= 750 %}{{ block.settings.blog.image | image_url: width: 750 }} 750w,{% endif %}
+                                    {% if block.settings.blog.image.width >= 1100 %}{{ block.settings.blog.image | image_url: width: 1100 }} 1100w,{% endif %}
+                                    {% if block.settings.blog.image.width >= 1500 %}{{ block.settings.blog.image | image_url: width: 1500 }} 1500w,{% endif %}
+                                    {% if block.settings.blog.image.width >= 2200 %}{{ block.settings.blog.image | image_url: width: 2200 }} 2200w,{% endif %}
+                                    {% if block.settings.blog.image.width >= 3000 %}{{ block.settings.blog.image | image_url: width: 3000 }} 3000w,{% endif %}
+                                    {{ block.settings.blog.image | image_url }} {{ block.settings.blog.image.width }}w
+                                "
+                            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw"
+                            src="{{ block.settings.blog.image | image_url: width: 1100 }}" loading="eager" fetchpriority="high"
+                            width="{{ block.settings.blog.image.width }}" height="{{ block.settings.blog.image.height }}"
+                            alt="{{ block.settings.blog.image.alt | escape }}"
+                            class="w-100 o-cover h-100"
+                            >
+                    </div>
+                    <div>
+                            <span class="mt-30 d-block circle-divider caption-with-letter-spacing" itemprop="dateCreated pubdate datePublished">
+                              {{- block.settings.blog.published_at | time_tag: format: 'date' -}}
+                            </span>
+                        <h1 class="article-template__title mt-15 font-ex" itemprop="headline">
+                            {{ block.settings.blog.title | escape }}
+                        </h1>
+                    </div>  
+                    <div
+                        class="article-template__content  rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} mt-20 mb-0"
+                        itemprop="articleBody" {{ block.shopify_attributes }}>
+                        {{ block.settings.blog.content }}
+                    </div>
+                    </div>
+            {% endcase %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+    {
+        "name": "Tab artical collection",
+        "tag": "section",
+        "class": "section",
+        "blocks": [
+            {
+            "type": "collection",
+            "name": "Collection",
+            "settings": [
+                {
+                "type": "article",
+                "id": "blog",
+                "label": "Blog"
+                }
+            ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Tab artical collection"
+            }
+        ]
+    }
+    {% endschema %}

@@ -848,10 +848,8 @@ form#customer_login {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
     margin: 0px auto;
     background: #F4F4F4;
-    max-height: 764px;
     padding: 40px;
     flex-direction: column;
 }
@@ -981,4 +979,12 @@ color: #151515;
   background: transparent;
   border: 1px solid #151515;
   color: #000;
+}
+
+.customer .customer-login-box .field label{
+  left: calc(var(--inputs-border-width) + 5rem) !important;
+}
+
+.customer .customer-login-box .field input{
+  padding-left:5rem !important;
 }

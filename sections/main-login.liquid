@@ -190,7 +190,6 @@
 <script>
 
   let forgot = document.querySelector('#forgot-password');
-  let email_submit = document.querySelector('#email-submit');
   let customer_login_box = document.querySelector('.customer-login-box');
   let reset_password_box = document.querySelector('.reset-password-box');
   let cancel_reset = document.querySelector('.cancel-reset');
@@ -200,10 +199,7 @@
     reset_password_box.style.display = "block";
   })
 
-  email_submit.addEventListener('click',()=>{
-    customer_login_box.style.display = "block";
-    reset_password_box.style.display = "none";
-  })
+ 
 
   cancel_reset.addEventListener('click',()=>{
     customer_login_box.style.display = "block";
