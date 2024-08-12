@@ -16,12 +16,6 @@
             "blog_show_author": false
           }
         },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
-        },
         "content": {
           "type": "content",
           "settings": {
@@ -31,14 +25,93 @@
       "block_order": [
         "featured_image",
         "title",
-        "share",
         "content"
+      ],
+      "settings": {
+      }
+    },
+    "tab_artical_collection_ccPPiY": {
+      "type": "tab-artical-collection",
+      "blocks": {
+        "collection_fk4R6M": {
+          "type": "collection",
+          "settings": {
+            "blog": "news\/the-rose-that-grew-from-concrete"
+          }
+        },
+        "collection_RAE9am": {
+          "type": "collection",
+          "settings": {
+            "blog": "news\/fighting-for-common-ground"
+          }
+        },
+        "collection_AVhaFU": {
+          "type": "collection",
+          "settings": {
+            "blog": "news\/against-all-odds"
+          }
+        },
+        "collection_yHpQdb": {
+          "type": "collection",
+          "settings": {
+            "blog": "news\/new-american-dream-1"
+          }
+        },
+        "collection_4cpTYd": {
+          "type": "collection",
+          "settings": {
+            "blog": "news\/spence-vs-crawford-a-timeline"
+          }
+        },
+        "collection_Wt4Hi6": {
+          "type": "collection",
+          "settings": {
+            "blog": "news\/fisherman-terence-crawford-lookbook"
+          }
+        },
+        "collection_rG3KcW": {
+          "type": "collection",
+          "settings": {
+            "blog": "news\/batman-jared-anderson-lookbook"
+          }
+        },
+        "collection_ncqXmD": {
+          "type": "collection",
+          "settings": {
+            "blog": "news\/everlast-x-matchroom-partnership"
+          }
+        },
+        "collection_HrN8NB": {
+          "type": "collection",
+          "settings": {
+            "blog": "news\/new-american-dream"
+          }
+        },
+        "collection_khUiHa": {
+          "type": "collection",
+          "settings": {
+            "blog": "news\/everlast-welcomes-alycia-baumgardner-to-the-team"
+          }
+        }
+      },
+      "block_order": [
+        "collection_fk4R6M",
+        "collection_RAE9am",
+        "collection_AVhaFU",
+        "collection_yHpQdb",
+        "collection_4cpTYd",
+        "collection_Wt4Hi6",
+        "collection_rG3KcW",
+        "collection_ncqXmD",
+        "collection_HrN8NB",
+        "collection_khUiHa"
       ],
       "settings": {
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "tab_artical_collection_ccPPiY"
   ]
 }
