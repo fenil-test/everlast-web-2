@@ -7,6 +7,7 @@
 .article {
   display: flex;
   align-items: center;
+  width: calc(33.33% - 8px);
 }
 
 .article.grid__item {

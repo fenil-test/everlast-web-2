@@ -15,17 +15,72 @@
     }
   }
 {%- endstyle -%}
+<div class="leading-blog">
 
-{%- paginate blog.articles by 6 -%}
+      <div class="select-blog d-flex">
+          <div class="select-blog-image w-50">
+            <img
+            srcset="
+              {%- if section.settings.blog.image.src.width >= 165 -%}{{ section.settings.blog.image.src | image_url: width: 165 }} 165w,{%- endif -%}
+              {%- if section.settings.blog.image.src.width >= 360 -%}{{ section.settings.blog.image.src | image_url: width: 360 }} 360w,{%- endif -%}
+              {%- if section.settings.blog.image.src.width >= 533 -%}{{ section.settings.blog.image.src | image_url: width: 533 }} 533w,{%- endif -%}
+              {%- if section.settings.blog.image.src.width >= 720 -%}{{ section.settings.blog.image.src | image_url: width: 720 }} 720w,{%- endif -%}
+              {%- if section.settings.blog.image.src.width >= 1000 -%}{{ section.settings.blog.image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+              {%- if section.settings.blog.image.src.width >= 1500 -%}{{ section.settings.blog.image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+              {{ section.settings.blog.image.src | image_url }} {{ section.settings.blog.image.src.width }}w
+            "
+            src="{{ section.settings.blog.image.src | image_url: width: 533 }}"
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+            alt="{{ section.settings.blog.image.src.alt | escape }}"
+            class="motion-reduce w-100 o-cover h-100"
+            loading="lazy"
+
+            width="{{ section.settings.blog.image.width }}"
+            height="{{ section.settings.blog.image.height }}"
+            >
+          </div>
+          <div class="w-50 d-flex f-column j-center a-center">
+              <div class="select-blog-details">
+                <span class="font-ex"> 
+                  {{ section.settings.blog.published_at |  time_tag: format: 'date' }}
+                </span>
+                <h2>
+                  {{ section.settings.blog.title  }}
+                </h2>
+    
+                <p>
+                  {{ section.settings.blog.content }}
+                </p>
+    
+                <a href="{{ section.settings.blog.url }} " class="d-flex a-center g-10 font-ex">Read more
+                  <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 1.5L7.5 8L1 14.5" stroke="black" stroke-width="2"/>
+    </svg>
+    
+                </a>
+              </div>
+          </div>
+      </div>
+ 
+</div>
+<div class="page-width">
+    <div class="blog-tab-name t-center">
+      {% for tag in blog.all_tags %}
+        <a data-blog-tag="{{ tag }}" class="blog-tab" href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+        
+      {% endfor %}
+    </div>
+</div>
+
+{%- paginate blog.articles by 9 -%}
   <div class="main-blog page-width section-{{ section.id }}-padding">
-    <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {{ blog.title | escape }}
-    </h1>
-
-    <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
-      {%- for article in blog.articles -%}
+    
+    
+    
+  <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
+    {%- for article in blog.articles -%}
         <div
-          class="blog-articles__article article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          class="blog-articles__article article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} {{ article.tags }}"
           {% if settings.animations_reveal_on_scroll %}
             data-cascade
             style="--animation-order: {{ forloop.index }};"
@@ -50,6 +105,9 @@
   </div>
 {%- endpaginate -%}
 
+
+
+
 {% schema %}
 {
   "name": "t:sections.main-blog.name",
@@ -59,6 +117,11 @@
     {
       "type": "header",
       "content": "t:sections.main-blog.settings.header.content"
+    },
+    {
+      "type": "article",
+      "id":"blog",
+      "label": "Select blog"
     },
     {
       "type": "select",

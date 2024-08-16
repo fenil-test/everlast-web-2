@@ -3,6 +3,7 @@
     "main": {
       "type": "main-blog",
       "settings": {
+        "blog": "news\/everlast-welcomes-alycia-baumgardner-to-the-team-2",
         "layout": "collage",
         "show_image": true,
         "image_height": "medium",

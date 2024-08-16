@@ -1,4 +1,6 @@
-let product__description = document.querySelector('.product__description');
+
+
+    let product__description = document.querySelector('.product__description');
 let product__description1 = document.querySelector('.product__description-item1');
 let product__description2 = document.querySelector('.product__description-item2');
 
@@ -39,3 +41,5 @@ multiShowBtn1.addEventListener('click', () => {
     multiShowBtn1.style.display = 'none';
     multiShowBtn.style.display = 'block';
 });
+
+

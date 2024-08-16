@@ -47,3 +47,21 @@ line-height: 14.4px;
 text-align: left;
 
 }
+
+.tab-collection-text span{
+    padding:20px 32px;
+    border: 1px solid #0000003D;
+    line-height: normal;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14.4px;
+    letter-spacing: 0.08em;
+    text-align: left;
+    color: #000000;
+
+}
+
+.tab-collection-text{
+    margin:80px 0px 40px 0px;
+}

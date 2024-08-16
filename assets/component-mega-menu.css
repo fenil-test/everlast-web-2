@@ -87,8 +87,6 @@
 }
 
 .header-wrapper{
-  position: absolute;
-  background: transparent;
   width: 100%;
   border: none;
 }
@@ -129,6 +127,6 @@
   display: block;
 }
 
-.header{
-  box-shadow: 0px 3px 13px 1px #000;
+.header__icon svg path {
+  fill: black;
 }

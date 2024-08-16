@@ -2774,6 +2774,7 @@ details[open] > .header__submenu {
 
 .header__menu-item span {
   transition: text-decoration var(--duration-short) ease;
+  color: black;
 }
 
 .header__menu-item:hover span {
@@ -3470,7 +3471,7 @@ details-disclosure > details {
 
 @font-face {
   font-family:'std-con';
-  src: url('https://cdn.shopify.com/s/files/1/0701/3518/5664/files/trade-gothic-lt-std-bold-condensed-no-20-5872def1d27d8.otf?v=1719918462') format('truetype');
+  src: url('https://cdn.shopify.com/s/files/1/0701/3518/5664/files/TradeGothicLTStd.ttf?v=1723798834') format('truetype');
 }
 
 .w-50{
@@ -3536,10 +3537,14 @@ details-disclosure > details {
 }
 
 h1,h2,h3,h4,h5,h6,p{
-  margin: 0 !important;
+  margin: 0 ;
 }
 .h1,.h2,.h3,.h4,.h5,.h6,p{
-  margin: 0 !important;
+  margin: 0 ;
+}
+
+.p-0{
+  padding: 0px !important;
 }
 
 

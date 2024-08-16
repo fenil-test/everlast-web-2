@@ -75,11 +75,6 @@
         {%- endif -%}
         <div class="card__content">
           <div class="card__information">
-            <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
-              <a href="{{ article.url }}" class="full-unstyled-link">
-                {{ article.title | truncate: 50 | escape }}
-              </a>
-            </h3>
             <div class="article-card__info caption-with-letter-spacing h5">
               {%- if show_date -%}
                 <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
@@ -88,6 +83,12 @@
                 <span>{{ article.author }}</span>
               {%- endif -%}
             </div>
+            <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
+              <a href="{{ article.url }}" class="full-unstyled-link">
+                {{ article.title | truncate: 50 | escape }}
+              </a>
+            </h3>
+            
             {%- if show_excerpt -%}
               {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
                 <p class="article-card__excerpt rte-width">
@@ -113,20 +114,21 @@
         </div>
       </div>
       <div class="card__content">
-        <div class="card__information">
-          <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
-            <a href="{{ article.url }}" class="full-unstyled-link">
-              {{ article.title | truncate: 50 | escape }}
-            </a>
-          </h3>
-          <div class="article-card__info caption-with-letter-spacing h5">
+        <div class="card__information p-0">
+          <div class="article-card__info caption-with-letter-spacing h5 mt-30 ">
             {%- if show_date -%}
-              <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
+              <span class="circle-divider font-ex">{{ article.published_at | time_tag: format: 'date' }}</span>
             {%- endif -%}
             {%- if show_author -%}
               <span>{{ article.author }}</span>
             {%- endif -%}
           </div>
+          <h3 class="card__heading font-ex text-decoration {% if show_excerpt %} h2{% endif %} mt-15 mb-20">
+            <a href="{{ article.url }}" class="full-unstyled-link">
+              {{ article.title | truncate: 50 | escape }}
+            </a>
+          </h3>
+        
           {%- if show_excerpt -%}
             {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
               <p class="article-card__excerpt rte-width">
