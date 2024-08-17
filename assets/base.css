@@ -3477,6 +3477,10 @@ details-disclosure > details {
 .w-50{
   width: 50% !important;
 }
+
+.d-none{
+  display: none !important;
+}
 .w-33{
   width: 33.33% !important;
 }
