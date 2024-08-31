@@ -2,13 +2,383 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "image_banner_LA74Bh": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_8AUyiC": {
+          "type": "heading",
+          "settings": {
+            "heading": "EVERLAST REWARDS CLUB",
+            "heading_color": "#ffffff",
+            "heading_size": "h3"
+          }
+        },
+        "text_tQq3J7": {
+          "type": "text",
+          "settings": {
+            "text": "Become a member and earn reward points every time you shop.",
+            "text_color": "#ffffff",
+            "text_style": "body"
+          }
+        },
+        "buttons_QgG3nB": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "SIGN UP",
+            "button_link_1": "https:\/\/harshil-soni-test.myshopify.com\/account\/register",
+            "button_style_secondary_1": false,
+            "button_label_2": " LOG IN",
+            "button_link_2": "https:\/\/harshil-soni-test.myshopify.com\/account\/login",
+            "button_style_secondary_2": false,
+            "link_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8AUyiC",
+        "text_tQq3J7",
+        "buttons_QgG3nB"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/RewardsHeaderImage.jpg",
+        "image_overlay_opacity": 50,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "gift_rdVbYt": {
+      "type": "gift",
+      "blocks": {
+        "gift_TRQQp9": {
+          "type": "Gift",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/icon.png",
+            "gift-heading": "Sign Up",
+            "gift-des": "Create an account and get 250 bonus points"
+          }
+        },
+        "gift_3AQx93": {
+          "type": "Gift",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/icon-2.png",
+            "gift-heading": "Earn Points ",
+            "gift-des": "Every time you shop or complete the below actions"
+          }
+        },
+        "gift_m6GMEm": {
+          "type": "Gift",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/icon-3.png",
+            "gift-heading": "Redeem ",
+            "gift-des": "Use points for discounts on orders"
+          }
+        }
+      },
+      "block_order": [
+        "gift_TRQQp9",
+        "gift_3AQx93",
+        "gift_m6GMEm"
+      ],
+      "settings": {
+        "heading": "HOW IT WORKS",
+        "des": "<p>Thanks for shopping at <a href=\"https:\/\/harshil-soni-test.myshopify.com\/\" target=\"_blank\" title=\"https:\/\/harshil-soni-test.myshopify.com\/\">everlast.com<\/a>. Earn points and activate rewards every time you shop with us.<\/p>",
+        "container_color": "#f5f5f5",
+        "gif_box_show": 3,
+        "gif_box_color": false,
+        "right_side_arrow": true,
+        "image_width": 100,
+        "page_width": 1480,
+        "padding-top": 48,
+        "padding-bottom": 0
+      }
+    },
+    "gift_hnRCXi": {
+      "type": "gift",
+      "blocks": {
+        "gift_RpFxYn": {
+          "type": "Gift",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1499.svg",
+            "gift-heading": "250 points",
+            "gift-des": "Create an account"
+          }
+        },
+        "gift_F4FXbp": {
+          "type": "Gift",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/email.svg",
+            "gift-heading": "100 points",
+            "gift-des": "Subscribe to emails"
+          }
+        },
+        "gift_Vz76m4": {
+          "type": "Gift",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bag.svg",
+            "gift-heading": "5 points per $1",
+            "gift-des": "Subscribe to emails"
+          }
+        },
+        "gift_TRcMia": {
+          "type": "Gift",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/twitter.png",
+            "gift-heading": "10 points",
+            "gift-des": "Follow us on Twitter"
+          }
+        },
+        "gift_zBtffn": {
+          "type": "Gift",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/insta.png",
+            "gift-heading": "10 points",
+            "gift-des": "Follow us on instagram"
+          }
+        },
+        "gift_GEmBmT": {
+          "type": "Gift",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_1499.png",
+            "gift-heading": "10 points",
+            "gift-des": "Like us on Facebook"
+          }
+        },
+        "gift_zLybyL": {
+          "type": "Gift",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Product_review.svg",
+            "gift-heading": "10 points",
+            "gift-des": "Review Products"
+          }
+        },
+        "gift_tWehHa": {
+          "type": "Gift",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/cake_1.png",
+            "gift-heading": "500 points",
+            "gift-des": "Happy Birthday!"
+          }
+        },
+        "gift_gNAAwP": {
+          "type": "Gift",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/refer.svg",
+            "gift-heading": "500 points",
+            "gift-des": "Refer a friend"
+          }
+        }
+      },
+      "block_order": [
+        "gift_RpFxYn",
+        "gift_F4FXbp",
+        "gift_Vz76m4",
+        "gift_TRcMia",
+        "gift_zBtffn",
+        "gift_GEmBmT",
+        "gift_zLybyL",
+        "gift_tWehHa",
+        "gift_gNAAwP"
+      ],
+      "settings": {
+        "heading": "WAYS TO EARN",
+        "des": "<p>Collect points and redeem them for rewards.<\/p>",
+        "container_color": "#ffffff",
+        "gif_box_show": 3,
+        "gif_box_color": true,
+        "right_side_arrow": false,
+        "image_width": 70,
+        "page_width": 1920,
+        "padding-top": 0,
+        "padding-bottom": 0
+      }
+    },
+    "lion_tier_J8NLHt": {
+      "type": "lion-tier",
+      "settings": {
+        "heading": "LOYALTY TIERS"
+      }
+    },
+    "collapsible_content_RNtfpk": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_hxTJWj": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I earn points?",
+            "icon": "none",
+            "row_content": "<p>Every time you make a purchase on our site you will earn at least 5 points per $1 spent. Please visit our Rewards page to view other ways to earn points.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_GPfGiq": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "When will I see points on my account after placing an order?",
+            "icon": "none",
+            "row_content": "<p>Points will be credited to your account after a 30-day pending period once you place your order.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_yrrdxf": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Will purchases prior to joining the rewards program be added to my points balance?",
+            "icon": "none",
+            "row_content": "<p>No, you will only start accumulating points once you sign up for rewards<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_nhR9cd": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How can I check my points balance?",
+            "icon": "none",
+            "row_content": "<p>You can find your updated points balance by logging into your account and accessing the \"Loyalty\" section.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_eWULDt": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do points expire?",
+            "icon": "none",
+            "row_content": "<p>Yes, they expire after 12 months of inactivity. What does \"inactivity\" mean? In this context, inactivity refers to customers who have not earned or redeemed any points through completing a purchase within the selected time frame. Customers who exceed 12 months without earning or redeeming points through completing a purchase will lose their accrued point balance.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_rTkcWE": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Does my tier status expire?",
+            "icon": "none",
+            "row_content": "<p>Yes, customers keep their tier status for a minimum of 12 months and have 12 months to either maintain or upgrade their status.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_6fRCxz": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I redeem all my points at once?",
+            "icon": "none",
+            "row_content": "<p>Yes, customers have the option to redeem all available points at once, if you have a paid item in your cart<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_LAcH78": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do I need to make a minimum purchase to use my points?",
+            "icon": "none",
+            "row_content": "<p>No, you can use your points with any purchase<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_E8MHyd": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "I received a referral from my friend. Is there a minimum they need to spend to receive their $5 Off?",
+            "icon": "none",
+            "row_content": "<p>Yes, the minimum spend is $50<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_97G7nQ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "When will I receive points after referring a friend?",
+            "icon": "none",
+            "row_content": "<p>After 30 days<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_yeKMyD": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "When will I receive birthday Points?",
+            "icon": "none",
+            "row_content": "<p>On the day you enter as your birthday<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_EytAEz": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "I no longer want to use my voucher. How do I get my points back?",
+            "icon": "none",
+            "row_content": "<p>Please email <a href=\"mailto:support@everlast.com\" title=\"mailto:support@everlast.com\">support@everlast.com <\/a>with your voucher code so we can return your points back.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_hnqYEB": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "I exchanged my order and now I see zero points for the original purchase. How do I get my points back?",
+            "icon": "none",
+            "row_content": "<p>Please email <a href=\"mailto:support@everlast.com\" title=\"mailto:support@everlast.com\">support@everlast.com <\/a>with your order number so we can update your points.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_Db9TNb": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I redeem a free product with my points?",
+            "icon": "none",
+            "row_content": "<p>Using your points for free products are only redeemable with purchase.<br\/>To proceed, please follow the below steps:<br\/>1. Make sure you are logged into your rewards account.<br\/>2. Add the item you want to purchase in your cart.<br\/>3. Go to your rewards page and select the item you want to redeem for points.<br\/>4. The redeemed rewards item should appear in your cart.<br\/>5. Checkout as you normally would.<\/p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_hxTJWj",
+        "collapsible_row_GPfGiq",
+        "collapsible_row_yrrdxf",
+        "collapsible_row_nhR9cd",
+        "collapsible_row_eWULDt",
+        "collapsible_row_rTkcWE",
+        "collapsible_row_6fRCxz",
+        "collapsible_row_LAcH78",
+        "collapsible_row_E8MHyd",
+        "collapsible_row_97G7nQ",
+        "collapsible_row_yeKMyD",
+        "collapsible_row_EytAEz",
+        "collapsible_row_hnqYEB",
+        "collapsible_row_Db9TNb"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "section",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "image_banner_LA74Bh",
+    "gift_rdVbYt",
+    "gift_hnRCXi",
+    "lion_tier_J8NLHt",
+    "collapsible_content_RNtfpk"
   ]
 }

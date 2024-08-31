@@ -12,6 +12,7 @@ class DetailsModal extends HTMLElement {
   }
 
   isOpen() {
+    console.log("adfsdc")
     return this.detailsContainer.hasAttribute('open');
   }
 

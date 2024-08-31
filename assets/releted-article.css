@@ -1,0 +1,21 @@
+.related-articles-title{
+    font-size: 36px;
+  line-height: 44px;
+  padding: 0 0px 48px;
+  width: 100%;
+
+}
+
+
+.related-articles .slick-slide {
+margin-right: 10px;
+}
+
+
+.related-articles .related-articles-page {
+width: calc(33.33% - 10px);
+}
+.related-articles .related-articles-tags{
+display: flex;
+gap: 10px;
+}

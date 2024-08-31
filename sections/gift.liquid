@@ -1,0 +1,199 @@
+{{ 'gift.css' | asset_url | stylesheet_tag }}
+
+<style>
+    .section-{{ section.id }}-padding{
+        padding-top: {{ section.settings.padding-top }}px;
+        padding-bottom: {{ section.settings.padding-bottom }}px;
+    }
+  
+    .section-{{ section.id }}-padding .page-width{
+        background: {{ section.settings.container_color }};
+        max-width: {{ section.settings.page_width }};
+        
+    }
+
+    .section-{{ section.id }}-padding .grid--6-col-desktop .grid__item {
+        width: calc(16.66% - var(--grid-desktop-horizontal-spacing) * 5 / 6);
+        max-width: calc(16.66% - var(--grid-desktop-horizontal-spacing) * 5 / 6);
+    }
+
+    .section-{{ section.id }}-padding .grid--5-col-desktop .grid__item {
+        width: calc(20% - var(--grid-desktop-horizontal-spacing) * 4 / 5);
+        max-width: calc(20% - var(--grid-desktop-horizontal-spacing) * 4 / 5);
+    }
+
+    .section-{{ section.id }}-padding .grid--4-col-desktop .grid__item {
+        width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
+        max-width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
+    }
+
+    .section-{{ section.id }}-padding .grid--3-col-desktop .grid__item {
+        width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
+        max-width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
+    }
+
+    .section-{{ section.id }}-padding .grid--2-col-desktop .grid__item {
+        width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+        max-width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+    }
+</style>
+
+<div class="gift-section section-{{ section.id }}-padding">
+    <div class="page-width">
+        <div class="gift-container">
+            <div class="gift-title t-center">
+            <h3 class="mb-30">{{ section.settings.heading }}</h3>
+            {{ section.settings.des }}
+        </div>
+        <div class="gift-list-items grid--{{ section.settings.gif_box_show }}-col-desktop">
+            {% for block in section.blocks %}
+                <div class="grid__item gift-box {% if section.settings.gif_box_color %} gif-box-color {% endif %}  {% if section.settings.right_side_arrow %} gif-box-arrow {% endif %}">
+                    <div class="image">
+                        <img
+                            srcset="
+                            {%- if block.settings.image.width >= 165 -%}{{ block.settings.image | image_url: width: 165 }} 165w,{%- endif -%}
+                            {%- if block.settings.image.width >= 360 -%}{{ block.settings.image | image_url: width: 360 }} 360w,{%- endif -%}
+                            {%- if block.settings.image.width >= 533 -%}{{ block.settings.image | image_url: width: 533 }} 533w,{%- endif -%}
+                            {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | image_url: width: 720 }} 720w,{%- endif -%}
+                            {%- if block.settings.image.width >= 1000 -%}{{ block.settings.image | image_url: width: 1000 }} 1000w,{%- endif -%}
+                            {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                            {{ block.settings.image | image_url }} {{ block.settings.image.width }}w
+                            "
+                            src="{{ block.settings.image | image_url: width: 533 }}"
+                            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                            alt="{{ block.settings.image.alt | escape }}"
+                            class="motion-reduce"
+                            loading="lazy"
+        
+                            width="{{ section.settings.image_width }}"
+                            height="{{ section.settings.image_width }}"
+                        >
+                    </div>
+                    <h4 class="mt-15 mb-15 uppercase">{{ block.settings.gift-heading }}</h4>
+                    <p class="">{{ block.settings.gift-des }}</p>
+                </div>
+            {% endfor %}
+           
+        </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Gift section",
+    "settings": [
+       {
+        "type": "text",
+        "id": "heading",
+        "default":"HOW IT WORKS",
+        "label":"Heading"
+       },
+       {
+        "type": "richtext",
+        "id": "des",
+        "label": "Description",
+        "default": "<p>Description</p>"
+       },
+       
+       {
+        "type": "color",
+        "id": "container_color",
+        "default": "#fff",
+        "label": "Container color"
+       },
+       {
+        "type": "range",
+        "id": "gif_box_show",
+        "default": 3,
+        "min":3,
+        "max": 6,
+        "label": "Number of columns on desktop",
+        "step": 1
+       },
+       {
+        "type": "checkbox",
+        "id": "gif_box_color",
+        "default": false,
+        "label": "Gif box background color"
+       },
+       
+       {
+        "type": "checkbox",
+        "id": "right_side_arrow",
+        "default": false,
+        "label": "Right side arrow"
+       },
+       {
+        "type": "range",
+        "id": "image_width",
+        "default": 100,
+        "min": 50,
+        "max": 300,
+        "label": "Gift box image width",
+        "step": 10
+       },
+       {
+        "type": "range",
+        "id": "page_width",
+        "default": 1920,
+        "min": 1000,
+        "max": 2000,
+        "label": "Container width",
+        "step": 10
+       },
+       {
+        "type": "range",
+        "id": "padding-top",
+        "default": 48,
+        "min": 0,
+        "max": 100,
+        "label": "Padding top",
+        "step": 1
+       },
+       {
+        "type": "range",
+        "id": "padding-bottom",
+        "default": 52,
+        "min": 0,
+        "max": 100,
+        "label": "Padding top",
+        "step": 1
+       }
+    ],
+    "blocks": [
+        {
+            "type": "Gift",
+            "name": "Gift",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id":"gift-heading",
+                    "default":"Sign Up ",
+                    "label": "Gift heading"
+                },
+                {
+                    "type": "text",
+                    "id":"gift-des",
+                    "default":"Create an account and get 250 bonus points",
+                    "label": "Gift description"
+                }
+            ]
+        }
+    ],
+    "presets": [
+      {
+        "name": "Gift section",
+        "blocks": [
+            {
+                "type":"Gift"
+            }
+        ]
+      }
+    ]
+  }
+{% endschema %}

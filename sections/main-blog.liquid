@@ -85,6 +85,7 @@
             data-cascade
             style="--animation-order: {{ forloop.index }};"
           {% endif %}
+          data-article-tag={{ article.tags }}
         >
           {%- render 'article-card',
             article: article,

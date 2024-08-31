@@ -46,9 +46,7 @@
 
 .collapsible-content-wrapper-narrow {
   margin: 0 auto;
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
-  max-width: 73.4rem;
+  padding:0px 120px;
 }
 
 .collapsible-content__header {
@@ -100,14 +98,6 @@
   padding-top: 0;
 }
 
-.collapsible-content summary:hover {
-  background: rgba(var(--color-foreground), 0.04);
-}
-
-.collapsible-content summary:hover .accordion__title {
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
-}
 
 /* check for flexbox gap in older Safari versions */
 @supports not (inset: 10px) {

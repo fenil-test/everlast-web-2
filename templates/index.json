@@ -13,6 +13,7 @@
           "type": "heading",
           "settings": {
             "heading": "LIMITED EDITION CAPSULE COLLECTION",
+            "heading_color": "#ffffff",
             "heading_size": "h4"
           }
         },
@@ -24,7 +25,8 @@
             "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_style_secondary_2": false,
+            "link_color": "#ffffff"
           }
         }
       },

@@ -39,7 +39,6 @@
         "center_image_GxTTKb": {
           "type": "center_image",
           "settings": {
-            "none": true
           }
         },
         "bottom_multiline_text_fQBKX3": {
@@ -78,9 +77,16 @@
       ],
       "settings": {
       }
+    },
+    "releted_article_QC3YqB": {
+      "type": "releted-article",
+      "settings": {
+        "title": "RELEATED ARTICLES"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "releted_article_QC3YqB"
   ]
 }

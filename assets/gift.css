@@ -1,0 +1,45 @@
+.gift-section .gift-box {
+    /* width: calc(33.33% - 80px * 2 / 3); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.gift-section .gif-box-arrow:after{
+    content: "";
+    position: absolute;
+    width: 12px;
+    background-image: url('https://cdn.shopify.com/s/files/1/0701/3518/5664/files/arroes.svg?v=1724308257');
+    height: 24px;
+    background-size: cover;
+    top: 50%;
+    right: -10%;
+    transform: translateY(-50%);
+}
+
+.gift-section .gif-box-arrow:last-child::after{
+    display: none;
+}
+
+.gift-section .page-width{
+    padding:80px 100px;
+}
+
+.gift-section .gif-box-color{
+    background-color: #f5f5f5;
+    padding: 40px 20px;
+}
+
+
+.gift-section .gift-list-items{
+    flex-wrap: wrap;
+    display: flex;
+    /* gap: 80px; */
+    margin: 52px 0px;
+}
+
+.gift-section  .gift-box p{ 
+    font-size: 16px;
+}
+

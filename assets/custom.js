@@ -1,6 +1,47 @@
+document.addEventListener('DOMContentLoaded', () => {
+    let tags = document.querySelectorAll('.blog-articles__article');
+    
+    if (tags.length > 0) {
+      tags.forEach((e) => {
+        e.addEventListener("click", () => {
+          let getTagName = e.getAttribute('data-article-tag');
+          localStorage.setItem('articleTag', getTagName);
+        });
+    });
+}
 
+let relatedArticlesTags = document.querySelectorAll('.related-articles-page');
+let sliderClass = document.querySelector('.related-articles-tags');
+let related_article_slider_icon = document.querySelector('.related-article-slider-icon');
+let countss = 0;
+relatedArticlesTags.forEach((e,index) => {
+    let storedTagName = localStorage.getItem('articleTag');
+    let newtag = e.getAttribute('data-related-articles-tags');
+    console.log("sdsd",storedTagName)
+    
+        if (newtag == storedTagName) {
+           countss++;
+              if(countss > 4 ){
+                  sliderClass.classList.add('related-articles-slider')
+                   related_article_slider_icon.style.display = "block" 
+              }
+              else{
+                  related_article_slider_icon.style.display = "none" 
+              }
+         
+          e.classList.add(storedTagName);
+      } else {
+          if( e && ! e.classList.contains(storedTagName)){
+              e.style.width = '0px';
+              e.style.display = 'none';
+          }
+          e.remove()
+          
+      }
+    });
+  });
 
-    let product__description = document.querySelector('.product__description');
+let product__description = document.querySelector('.product__description');
 let product__description1 = document.querySelector('.product__description-item1');
 let product__description2 = document.querySelector('.product__description-item2');
 

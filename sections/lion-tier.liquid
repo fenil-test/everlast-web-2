@@ -1,0 +1,77 @@
+{{ 'lion-tier.css' | asset_url | stylesheet_tag }}
+
+
+
+<div class="lion-tier-section">
+    <div class="page-width ">
+      <h4 class="lion-table-title t-center">{{ section.settings.heading }}</h4>
+     <div class="d-flex f-column a-center ">
+        <div class="lion-tier-column-title ">
+        {% assign data = shop.metaobjects['loin_tier'] %}
+        {% for metaobject_lion_tier in data.values %}
+          {% assign lion_column_titles = metaobject_lion_tier.lion_column_title %}
+            {% if lion_column_titles != blank %}
+               {{  lion_column_titles | metafield_tag }}
+              {% else %}
+                <p class="lion-tier-empty">asdsd</p>
+            {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="lion-tier-table-details d-flex"> 
+        <div class="lion-tier-title">
+        {% assign data = shop.metaobjects['loin_tier'] %}
+        {% for metaobject_lion_tier in data.values %}
+          {% assign lion_column_titles = metaobject_lion_tier.lion_tier_title %}
+           {% for boolean_value in lion_column_titles.value %}
+             <p> {{  boolean_value }}</p>
+           {% endfor %}
+        
+        {% endfor %}
+      </div>
+      
+      <div  class="lion-tier-details d-flex">
+        {% for metaobject_lion_tier in data.values %}
+        {% assign lion_column_boolean = metaobject_lion_tier.lion_tier_boolean_value %}
+        
+         <div class="lion-tier-value ">
+              {% if lion_column_boolean != blank %}
+                  {% for boolean_value in lion_column_boolean.value %}
+                      {% if boolean_value == 'yes' %}
+                        <div class="image">
+                          <img src="https://cdn.shopify.com/s/files/1/0701/3518/5664/files/checked.png?v=1724568104" width="20px" height="20px">
+                        </div>
+                      {% elsif boolean_value == 'no' %}
+                        <div class="image">
+                        <img src="https://cdn.shopify.com/s/files/1/0701/3518/5664/files/error.png?v=1724568104" width="20px" height="20px">
+                        </div>
+                        
+                      {% endif %}
+                  {% endfor %}
+              {% endif %}
+         </div>
+      {% endfor %}
+      </div>
+      </div>
+      
+     </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Lion tier",
+    "settings": [
+      {
+        "type": "text",
+        "id":"heading",
+        "default":"LOYALTY TIERS",
+        "label": "Heading"
+      }
+    ],
+    "presets": [
+      {
+        "name":"Lion tier"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,4 +1,7 @@
   
+*{
+  letter-spacing: 0px;
+}
 :root {
   --alpha-button-background: 1;
   --alpha-button-border: 1;
@@ -3758,6 +3761,31 @@ h1,h2,h3,h4,h5,h6,p{
   margin: 0!important;
 }
 
+.g-10{
+  gap: 10px !important;
+}
+
+.g-20{
+  gap: 20px !important;
+}
+.g-30{
+  gap: 30px !important;
+}
+
+.g-5{
+  gap: 5px !important;
+}
+.g-15{
+  gap: 15px !important;
+}
+
+.g-25{
+  gap: 25px !important;
+}
+.pointer{
+  cursor: pointer;
+}
+
 
 
 
@@ -3937,10 +3965,4 @@ modal-dialog[open]{
   border-radius: 50%;
 }
 
-.g-10{
-  gap: 10px;
-}
 
-.g-20{
-  gap: 20px;
-}
