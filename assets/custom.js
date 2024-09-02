@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
           localStorage.setItem('articleTag', getTagName);
         });
     });
+
+
+    
+
 }
 
 let relatedArticlesTags = document.querySelectorAll('.related-articles-page');
@@ -39,6 +43,48 @@ relatedArticlesTags.forEach((e,index) => {
           
       }
     });
+
+
+
+    let user_edit_form = document.querySelector('.user-edit-address-form'); 
+    let user_edit_btn = document.querySelectorAll('.edit-address-btn'); 
+    let user_edit_close = document.querySelector('.edit-address-close'); 
+    let add_address_btn = document.querySelectorAll('.add-address-btn'); 
+    let add_address_form = document.querySelector('.user-add-form'); 
+    let add_address_close = document.querySelector('.add-address-close'); 
+
+    user_edit_btn.forEach((e,index)=>{
+        
+
+        e.addEventListener('click',()=>{
+            
+            user_edit_form.style.display = "block";
+
+            user_edit_close.addEventListener('click',(e)=>{
+                user_edit_form.style.display = "none";
+
+            })
+        })
+
+    })
+
+    add_address_btn.forEach((e,index)=>{
+        
+
+        e.addEventListener('click',()=>{
+            
+            add_address_form.style.display = "block";
+
+            add_address_close.addEventListener('click',(e)=>{
+                add_address_form.style.display = "none";
+
+            })
+        })
+
+    })
+
+    
+
   });
 
 let product__description = document.querySelector('.product__description');

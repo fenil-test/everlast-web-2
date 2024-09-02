@@ -2,6 +2,52 @@
   "sections": {
     "main": {
       "type": "main-account",
+      "blocks": {
+        "tabs_n3MaxU": {
+          "type": "tabs",
+          "settings": {
+            "tabs": "My Account"
+          }
+        },
+        "tabs_nbzgmy": {
+          "type": "tabs",
+          "settings": {
+            "tabs": "Subscription"
+          }
+        },
+        "tabs_afbQUV": {
+          "type": "tabs",
+          "settings": {
+            "tabs": "Addresses"
+          }
+        },
+        "tabs_RXVJXf": {
+          "type": "tabs",
+          "settings": {
+            "tabs": "Settings"
+          }
+        },
+        "tabs_bWNdE8": {
+          "type": "tabs",
+          "settings": {
+            "tabs": "Loyalty"
+          }
+        },
+        "tabs_AhwWrY": {
+          "type": "tabs",
+          "settings": {
+            "tabs": "Log Out"
+          }
+        }
+      },
+      "block_order": [
+        "tabs_n3MaxU",
+        "tabs_nbzgmy",
+        "tabs_afbQUV",
+        "tabs_RXVJXf",
+        "tabs_bWNdE8",
+        "tabs_AhwWrY"
+      ],
       "settings": {
         "padding_top": 36,
         "padding_bottom": 36
