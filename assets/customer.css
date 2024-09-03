@@ -138,14 +138,35 @@ font-family:"font-ex";
 .customer button {
    margin-top:20px;
   background: #151515;
-  background: #151515;
   color: #fff;
   width: 100%;
   border-radius: 5px;
   overflow: hidden;
 }
 
-.customer .user-order-manage select{
+.order-status span:nth-child(odd){
+font-size: 12px;
+font-weight: 400;
+line-height: 14.4px;
+letter-spacing: 0.06em;
+text-align: left;
+color: #151515;
+text-transform: uppercase;
+}
+
+.order-status span:nth-child(even){
+  color: #151515;
+ 
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.4px;
+  letter-spacing: 0.06em;
+  text-align: left;
+text-transform: uppercase;
+
+  }
+
+.customer .user-order-manage  {
 font-size: 12px;
 font-weight: 400;
 line-height: 14.4px;
@@ -155,7 +176,9 @@ color: #151515;
 appearance: none;
 text-transform: uppercase;
 background: transparent;
-padding-right: 50px;
+padding-left: 28px;
+display: flex;
+align-items: center;
 }
 
 .customer .order-details h3{
@@ -167,6 +190,8 @@ padding-right: 50px;
   color: #151515;
 }
 
+
+
 .customer .order-details h4{
   font-size: 12px;
   font-weight: 700;
@@ -174,7 +199,8 @@ padding-right: 50px;
   letter-spacing: 0.2em;
   text-align: left;
   color: #151515;
-  margin: 14px 24px;
+  margin: 14px 0px 24px 0px;
+  font-family: "font-ex";
 }
 
 .customer .order-details span{
@@ -185,7 +211,8 @@ padding-right: 50px;
   line-height: 12px;
   letter-spacing: 0.1em;
   text-align: left;
-  
+  margin-right: 20px;
+  text-transform: uppercase;
 }
 
 .customer .order-product-box{
@@ -224,19 +251,6 @@ padding-right: 50px;
 
 .customer select:focus{
   box-shadow: none;
-}
-
-.user-order-manage:after{
-  content: "";
-  position: absolute;
-  top: 18px;
-  right: 5%;
-  background-image:url('https://cdn.shopify.com/s/files/1/0701/3518/5664/files/Vector_45.png?v=1725259838');
-  background-size: cover;
-  width: 12px;
-  height: 9px;
-  z-index: 1;
-  background-position: center;
 }
 
 .customer ul {
@@ -606,6 +620,7 @@ text-align: end;
 .user-account-tabs{
   min-width:400px;
   border: 0.5px solid #1515151A;
+  height: min-content;
 }
 
 .customer .user-account-tabs h3{

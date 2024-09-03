@@ -61,12 +61,11 @@
                     <div class="user-daily-price d-flex a-center">
                       <p> Total: <strong>{{ customer.subtotal_price |  money }}</strong></p>
                       <div class="user-order-manage">
-                        <select class="font-ex">
-                          <option>Manage Order</option>
-                          <option>Manage Order</option>
-                          <option>Manage Order</option>
-                          <option>Manage Order</option>
-                        </select>
+                          <p> Manage Order </p>
+                          <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1.25L6.5 6.75L1 1.25" stroke="#151515"/>
+                          </svg>
+
                       </div>
                     </div>
                 </div>
@@ -89,7 +88,14 @@
                         
                         </div>
                       </div>
-                      <div class="order-devilery"></div>
+                      <div class="order-devilery">
+                        <div class="order-status">
+                          <span class="w-50 inline-block font-ex">Date:</span><span class="w-50 inline-block font-ex"> {{ customer.created_at |  date: "%b %d, %Y" }}</span>
+                          <span class="w-50 inline-block font-ex">Payment Status: </span><span class="w-50 inline-block font-ex">{{ customer.financial_status }}</span>
+                          <span class="w-50 inline-block font-ex">Fulfillment:</span><span class="w-50 inline-block font-ex">{{ customer.fulfillment_status }}</span>
+                        </div>
+                        <div></div>
+                      </div>
                       </div>
                     {% endfor %}
 

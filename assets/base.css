@@ -3613,11 +3613,11 @@ h1,h2,h3,h4,h5,h6,p{
 }
 
 .d-block{
-  display: block!important;
+  display: block !important;
 }
 
 .inline-block{
-  display: block!important;
+  display: inline-block !important;
 }
 
 .text-upper{
